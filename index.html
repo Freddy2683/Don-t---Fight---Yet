@@ -1,0 +1,1399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Don't Fight Yet MVP TEST CANDIDATE 2</title>
+<style>
+:root{--bg:#f7f4ef;--card:#fff;--ink:#171717;--muted:#666;--line:#ded8cf}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:520px;margin:auto;min-height:100vh;padding:28px 20px 42px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.brand{font-size:12px;letter-spacing:.14em;font-weight:800}
+.lang{display:flex;gap:5px}.lang button{width:auto;margin:0;padding:7px 10px;border-radius:9px;font-size:12px}
+.lang .on{background:var(--ink);color:#fff}.screen{display:none}.screen.active{display:block}
+.kicker{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.pill{display:inline-block;background:#ece7df;padding:7px 10px;border-radius:999px;font-size:12px;font-weight:800}
+h1{font-size:34px;line-height:1.06;margin:10px 0 14px}h2{font-size:26px;line-height:1.15;margin:9px 0 14px}
+p{font-size:17px;line-height:1.48}.muted{color:var(--muted)}.why{font-size:15px;color:#555;border-left:3px solid #bbb;padding-left:12px;margin:18px 0}
+button{width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px;margin:7px 0;font-size:16px;font-weight:700;color:var(--ink)}
+.primary{background:var(--ink);color:#fff;text-align:center}.back{width:auto;border:0;background:none;padding:7px 0;margin:0 0 13px;color:var(--muted);font-size:14px}
+.script{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;font-size:19px;line-height:1.45}
+.footer{font-size:12px;color:#777;margin-top:35px}
+</style>
+</head>
+<body><main>
+<div class="top"><div class="brand">DON'T FIGHT YET · MVP TEST CANDIDATE 2</div><div class="lang"><button id="en" onclick="setLang('en')">EN</button><button id="es" onclick="setLang('es')">ES</button></div></div>
+
+
+<section id="intro" class="screen active">
+<style>
+.dfy-stage{min-height:68vh;display:flex;flex-direction:column;justify-content:center;text-align:center}
+.dfy-anim{position:relative;min-height:210px;display:flex;align-items:center;justify-content:center}
+.dfy-line{position:absolute;width:100%;opacity:0;transform:translateY(8px);animation:dfyFade 8.2s ease-in-out forwards}
+.dfy-line.brand{font-size:clamp(3rem,12vw,5.2rem);font-weight:800;line-height:.94;letter-spacing:-.055em;animation-delay:.15s}
+.dfy-line.one{font-size:clamp(2rem,8vw,3.5rem);font-weight:750;line-height:1.08;animation-delay:2.55s}
+.dfy-line.two{font-size:clamp(2rem,8vw,3.5rem);font-weight:750;line-height:1.08;animation-delay:4.95s}
+.dfy-start{opacity:0;pointer-events:none;animation:dfyCTA .65s ease forwards;animation-delay:7.05s}
+@keyframes dfyFade{0%{opacity:0;transform:translateY(8px)}8%{opacity:1;transform:translateY(0)}25%{opacity:1;transform:translateY(0)}34%,100%{opacity:0;transform:translateY(-8px)}}
+@keyframes dfyCTA{to{opacity:1;pointer-events:auto}}
+@media (prefers-reduced-motion: reduce){
+ .dfy-line{animation:none;display:none}.dfy-line.brand{display:block;opacity:1;position:relative;transform:none}
+ .dfy-start{animation:none;opacity:1;pointer-events:auto}
+}
+</style>
+<div class="dfy-stage">
+<div class="dfy-anim">
+<div class="dfy-line brand">DON'T<br>FIGHT YET</div>
+<div class="dfy-line one" data-en="You don't have to solve it right now." data-es="No tienes que resolverlo ahora."></div>
+<div class="dfy-line two" data-en="Just avoid making it worse." data-es="Solo evita empeorarlo."></div>
+</div>
+<button class="primary dfy-start" onclick="go('introPurpose')" data-en="Let's begin" data-es="Empecemos"></button>
+</div>
+</section>
+<section id="introPurpose" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="pill" data-en="DON'T FIGHT YET" data-es="DON'T FIGHT YET"></div>
+<p style="font-size:1.18rem;line-height:1.55;margin-top:24px" data-en="Don't Fight Yet doesn't try to replace a professional couples therapy session. Its purpose is to help you avoid escalating the argument further." data-es="Don't Fight Yet no intenta reemplazar una sesión profesional de terapia de pareja. Su propósito es ayudarte a evitar que la discusión escale aún más."></p>
+<div class="why" style="margin-top:26px" data-en="<b>If a discussion with your partner has left you affected and you can't stop thinking about it, start now.</b><br><br>Here you'll find a guide designed to help you avoid making the situation worse." data-es="<b>Si te sientes afectado/a por una discusión con tu pareja en la que no dejas de pensar, empieza ahora.</b><br><br>Aquí encontrarás una guía que intentará ayudarte a no empeorar la situación."></div>
+<button class="primary" onclick="enterApp()" data-en="Continue" data-es="Continuar"></button>
+<button onclick="go('danger')" data-en="I'm in a safety situation" data-es="Estoy en una situación de peligro"></button>
+<label style="display:flex;gap:9px;align-items:flex-start;margin-top:14px;font-size:.88rem;opacity:.8">
+<input id="skipIntro" type="checkbox" style="width:auto;margin-top:3px">
+<span data-en="Don't show this introduction next time" data-es="No volver a mostrar esta introducción"></span>
+</label>
+</section>
+
+
+<section id="askOrMentalLoad" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="EVERYDAY TRIGGER" data-es="DETONANTE COTIDIANO"></div>
+<h1 data-en="It bothers me that I have to ask." data-es="Me molesta tener que pedírselo."></h1><p data-en="What is actually bothering you?" data-es="¿Qué es lo que realmente te molesta?"></p>
+<button onclick="go('mentalLoad')" data-en="I feel like I have to notice, remember and manage everything" data-es="Siento que tengo que detectar, recordar y gestionar todo"></button>
+<button onclick="go('justAsk')" data-en="My partner should notice without me having to say it" data-es="Mi pareja debería darse cuenta sin que yo tenga que decirlo"></button></section>
+
+<section id="justAsk" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="JUST ASK" data-es="SIMPLEMENTE PÍDELO"></div>
+<h1 data-en="Don't turn a need into a silent test." data-es="No conviertas una necesidad en una prueba silenciosa."></h1>
+<p data-en="Something can feel obvious to you and still not be on your partner's radar with the same priority." data-es="Algo puede parecerte obvio y, aun así, no estar en el radar de tu pareja con la misma prioridad."></p>
+<div class="why" data-en="<b>Your partner can't read your mind.</b><br>Make the need explicit before frustration turns the request into a complaint." data-es="<b>Tu pareja no puede leerte la mente.</b><br>Haz explícita la necesidad antes de que la frustración convierta el pedido en reclamo."></div>
+<button onclick="go('askBetter')" data-en="Help me ask for it better" data-es="Ayúdame a pedirlo mejor"></button><button onclick="go('mentalLoad')" data-en="But I'm tired of asking for everything" data-es="Pero estoy cansado/a de tener que pedirlo todo"></button></section>
+
+<section id="askBetter" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="SAY IT BETTER" data-es="DILO MEJOR"></div>
+<h1 data-en="Make the request easy to understand." data-es="Haz que tu pedido sea fácil de entender."></h1>
+<div class="why" data-en="<b>Try:</b> situation + specific request + when.<br><br>“Could you take care of ___ before ___? It's important to me.”" data-es="<b>Prueba:</b> situación + pedido concreto + cuándo.<br><br>“¿Puedes encargarte de ___ antes de ___? Para mí es importante.”"></div>
+<button onclick="go('feedback')" data-en="I can try that" data-es="Puedo intentar eso"></button></section>
+
+<section id="mentalLoad" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="MENTAL LOAD" data-es="CARGA MENTAL"></div>
+<h1 data-en="Maybe the problem isn't this one task." data-es="Quizás el problema no sea esta tarea."></h1>
+<p data-en="You may be tired of having to notice what needs doing, remember it and assign it every time." data-es="Tal vez estás cansado/a de tener que detectar lo que falta, recordarlo y asignarlo cada vez."></p>
+<button onclick="go('askBetter')" data-en="I need this one concrete thing done" data-es="Necesito que haga esta cosa concreta"></button>
+<button onclick="go('sharedResponsibility')" data-en="I need recurring responsibilities without reminders" data-es="Necesito responsabilidades recurrentes sin recordatorios"></button></section>
+
+<section id="sharedResponsibility" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="SHARED RESPONSIBILITY" data-es="RESPONSABILIDAD COMPARTIDA"></div>
+<h1 data-en="Agree on ownership, not endless reminders." data-es="Acuerden responsabilidad, no recordatorios interminables."></h1>
+<div class="why" data-en="Try: “I don't want to keep reminding you about this. Can we agree that you fully own ___ and I own ___?”" data-es="Prueba: “No quiero estar recordándote esto cada semana. ¿Podemos acordar que tú te encargues completamente de ___ y yo de ___?”"></div>
+<button onclick="go('partnerSaysAskEverything')" data-en="My partner says they have to ask me for everything" data-es="Mi pareja dice que tiene que pedírmelo todo"></button><button onclick="go('feedback')" data-en="That helps me frame it" data-es="Esto me ayuda a plantearlo"></button></section>
+
+<section id="partnerSaysAskEverything" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="LISTEN FOR THE REAL REQUEST" data-es="ESCUCHA EL PEDIDO REAL"></div>
+<h1 data-en="Don't answer “then just ask me” yet." data-es="No respondas “entonces solo pídemelo” todavía."></h1>
+<p data-en="They may be tired of having to notice, remember and assign it every time." data-es="Puede estar cansado/a de tener que detectarlo, recordarlo y asignarlo cada vez."></p>
+<div class="why" data-en="Try: “Is what bothers you having to ask me, or feeling like you have to stay on top of this all the time?”" data-es="Prueba: “¿Lo que te molesta es tener que pedírmelo o sentir que tienes que estar pendiente de esto todo el tiempo?”"></div>
+<button onclick="go('feedback')" data-en="I can ask that" data-es="Puedo preguntar eso"></button></section>
+
+<section id="drivingConflict" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="IN THE CAR" data-es="EN EL AUTO"></div>
+<h1 data-en="Does your partner criticize how you drive?" data-es="¿Tu pareja critica cómo conduces?"></h1><p data-en="Are you driving right now?" data-es="¿Estás conduciendo ahora?"></p>
+<button onclick="go('drivingNow')" data-en="Yes" data-es="Sí"></button><button onclick="go('drivingAfter')" data-en="No" data-es="No"></button></section>
+
+<section id="drivingNow" class="screen">
+<div class="pill" data-en="SAFETY FIRST" data-es="SEGURIDAD PRIMERO"></div><h1 data-en="Stop reading. Focus on driving." data-es="Deja de leer. Concéntrate en conducir."></h1>
+<p data-en="Don't try to solve the argument behind the wheel." data-es="No intentes resolver la discusión mientras estás al volante."></p>
+<div class="why" data-en="“I want to talk about this, but not while I'm driving. We'll talk when we arrive.”" data-es="“Quiero hablar de esto, pero no mientras conduzco. Cuando lleguemos lo hablamos.”"></div>
+<button onclick="go('home')" data-en="I'll put the phone down" data-es="Voy a dejar el teléfono"></button></section>
+
+<section id="drivingAfter" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="IN THE CAR" data-es="EN EL AUTO"></div>
+<h1 data-en="Separate safety from criticism." data-es="Separa seguridad de crítica."></h1>
+<button onclick="go('drivingCriticism')" data-en="They constantly correct how I drive" data-es="Me corrige constantemente cómo conduzco"></button>
+<button onclick="go('drivingCriticism')" data-en="They shouted about how I was driving" data-es="Me gritó por cómo estaba conduciendo"></button>
+<button onclick="go('drivingSafety')" data-en="They warned me about an immediate danger" data-es="Me advirtió de un peligro inmediato"></button></section>
+
+<section id="drivingSafety" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="SAFETY" data-es="SEGURIDAD"></div>
+<h1 data-en="An immediate warning is different from criticism." data-es="Una advertencia inmediata es diferente de una crítica."></h1>
+<p data-en="Deal with a real hazard first. You can discuss tone afterward." data-es="Atiende primero un peligro real. Después pueden hablar del tono."></p>
+<button onclick="go('deliveryMatters')" data-en="I also need to talk about how it was said" data-es="También necesito hablar de cómo me lo dijo"></button><button onclick="go('feedback')" data-en="That distinction helps" data-es="Esa distinción me ayuda"></button></section>
+
+<section id="drivingCriticism" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="DRIVE FIRST. DISCUSS LATER." data-es="PRIMERO CONDUCE. DESPUÉS HABLEN."></div>
+<div class="why" data-en="Try: “If you see something dangerous, tell me immediately. If it's about how you prefer me to drive, let's talk when we arrive.”" data-es="Prueba: “Si ves algo peligroso, dímelo inmediatamente. Si es sobre cómo prefieres que conduzca, hablemos cuando lleguemos.”"></div>
+<button onclick="go('deliveryMatters')" data-en="The way they say it is also part of the problem" data-es="La forma en que me lo dice también es parte del problema"></button><button onclick="go('feedback')" data-en="I know what to say" data-es="Ya sé qué decir"></button></section>
+
+<section id="deliveryMatters" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="THE WAY YOU SAY IT MATTERS" data-es="LAS FORMAS TAMBIÉN COMUNICAN"></div>
+<h1 data-en="The message may be valid. The delivery can still push you away." data-es="El mensaje puede ser válido. La forma aun así puede distanciarte."></h1>
+<p data-en="What makes it harder to listen?" data-es="¿Qué hace más difícil escucharlo?"></p>
+<button onclick="go('deliveryResponse')" data-en="The tone" data-es="El tono"></button><button onclick="go('deliveryResponse')" data-en="Sarcasm or mockery" data-es="El sarcasmo o la burla"></button>
+<button onclick="go('deliveryResponse')" data-en="Gestures or facial expressions" data-es="Los gestos o expresiones"></button><button onclick="go('deliveryResponse')" data-en="Always / never and generalizations" data-es="“Siempre / nunca” y generalizaciones"></button></section>
+
+<section id="deliveryResponse" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="SEPARATE CONTENT FROM DELIVERY" data-es="SEPARA CONTENIDO Y FORMA"></div>
+<div class="why" data-en="Try: “I want to understand what you're telling me. I'm finding it hard to listen because of how we're talking. Can we lower the intensity and continue?”" data-es="Prueba: “Quiero entender lo que me estás diciendo. Me está costando escucharlo por cómo estamos hablando. ¿Podemos bajar la intensidad y continuar?”"></div>
+<button onclick="go('deliveryMirror')" data-en="My partner says my way of speaking pushes them away" data-es="Mi pareja dice que mi forma de hablar la distancia"></button><button onclick="go('feedback')" data-en="I can try this" data-es="Puedo intentar esto"></button></section>
+
+<section id="deliveryMirror" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="CHECK YOUR SIDE" data-es="REVISA TU PARTE"></div>
+<h1 data-en="You can be right about the issue and wrong about the delivery." data-es="Puedes tener razón sobre el tema y equivocarte en la forma."></h1>
+<p data-en="Is there something valid in what your partner points out about your tone, sarcasm, gestures or generalizations?" data-es="¿Hay algo válido en lo que tu pareja señala sobre tu tono, sarcasmo, gestos o generalizaciones?"></p>
+<button onclick="go('feedback')" data-en="Yes, I can own part of that" data-es="Sí, puedo reconocer una parte"></button></section>
+
+<section id="notMySituation" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="pill" data-en="HELP US BUILD IT" data-es="AYÚDANOS A CONSTRUIRLO"></div>
+<h1 data-en="Don't see your situation?" data-es="¿No encuentras tu situación?"></h1>
+<p data-en="Tell us briefly. Don't include names, phone numbers, addresses or identifying details." data-es="Cuéntanos brevemente. No incluyas nombres, teléfonos, direcciones ni datos que permitan identificar a otra persona."></p>
+<textarea id="missingSituation" maxlength="700" data-placeholder-en="Briefly describe what happened..." data-placeholder-es="Describe brevemente qué pasó..." placeholder="Describe brevemente qué pasó..." style="width:100%;min-height:140px;border-radius:16px;padding:14px;font:inherit;box-sizing:border-box"></textarea>
+<p class="muted" data-en="For this Test Candidate, this text stays on your device unless you copy and share it with the test team." data-es="En este Test Candidate, este texto permanece en tu dispositivo salvo que lo copies y lo compartas con el equipo de prueba."></p>
+<button onclick="copyMissingSituation()" data-en="Copy my feedback" data-es="Copiar mi comentario"></button><button onclick="go('home')" data-en="Back to start" data-es="Volver al inicio"></button></section>
+<section id="home" class="screen">
+<div class="pill" data-en="DON'T FIGHT YET" data-es="DON'T FIGHT YET"></div>
+<h1 style="margin-top:22px" data-en="What is<br>Don't Fight Yet?" data-es="¿Qué es<br>Don't Fight Yet?"></h1>
+<p data-en="A guide for those moments when an argument with your partner is still running through your mind, has just happened, or you need to prepare for a difficult conversation." data-es="Una guía para esos momentos en los que una discusión con tu pareja todavía está dando vueltas en tu cabeza, acaba de ocurrir o necesitas prepararte para una conversación difícil."></p>
+<h2 style="margin-top:26px" data-en="Where are you right now?" data-es="¿En qué momento estás?"></h2>
+<button onclick="restartAt('right')" data-en="🔥 I'M STILL ACTIVATED<br><span class='muted'>It's happening or it just happened. Help me not make it worse.</span>" data-es="🔥 SIGO ALTERADO/A<br><span class='muted'>Está pasando o acaba de pasar. Ayúdame a no empeorarlo.</span>"></button>
+<button onclick="restartAt('after')" data-en="💔 THE FIGHT IS OVER<br><span class='muted'>I need help with what was left after it.</span>" data-es="💔 LA PELEA YA TERMINÓ<br><span class='muted'>Necesito ayuda con lo que quedó después.</span>"></button>
+<button onclick="restartAt('before')" data-en="💬 I NEED TO TALK ABOUT SOMETHING<br><span class='muted'>Help me prepare before I say it.</span>" data-es="💬 NECESITO HABLAR DE ALGO<br><span class='muted'>Ayúdame a prepararme antes de decirlo.</span>"></button>
+<button class="back" onclick="go('introPurpose')" data-en="About Don't Fight Yet" data-es="Acerca de Don't Fight Yet"></button>
+<div style="margin-top:28px"></div><div class="pill" data-en="COMMON EVERYDAY TRIGGERS" data-es="DETONANTES COTIDIANOS"></div>
+<button onclick="go('askOrMentalLoad')" data-en="It bothers me that I have to ask" data-es="Me molesta tener que pedirlo"></button>
+<button onclick="go('drivingConflict')" data-en="We fight about how I drive" data-es="Discutimos por cómo conduzco"></button>
+<button onclick="go('deliveryMatters')" data-en="The way my partner says things pushes me away" data-es="La forma en que mi pareja dice las cosas me distancia"></button>
+<button onclick="go('notMySituation')" data-en="I don't see my situation" data-es="No encuentro mi situación"></button></section>
+
+<section id="right" class="screen">
+<button class="back" onclick="go('home')" data-en="← Home" data-es="← Inicio"></button>
+<div class="kicker" data-en="RIGHT NOW" data-es="AHORA MISMO"></div><h2 data-en="What are you dealing with?" data-es="¿Qué está pasando?"></h2>
+<button onclick="go('yell')" data-en="I'm about to yell →" data-es="Estoy a punto de gritar →"></button>
+<button onclick="go('defensive')" data-en="I'm getting defensive →" data-es="Me estoy poniendo a la defensiva →"></button>
+<button onclick="go('criticism')" data-en="My partner is criticizing me →" data-es="Mi pareja me está criticando →"></button>
+<button onclick="go('chase')" data-en="My partner is walking away and I want to follow them →" data-es="Mi pareja se está alejando y quiero ir detrás →"></button>
+</section>
+
+<section id="yell" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="kicker" data-en="STOP" data-es="ALTO"></div>
+<h2 data-en="Don't say the next thing yet." data-es="No digas nada aún."></h2>
+<p data-en="If you're about to yell, solving the problem is no longer the priority." data-es="Si estás a punto de gritar, resolver el problema ya no es la prioridad."></p>
+<div class="why" data-en="<b>Because</b> when you're this activated, listening and choosing your words gets harder." data-es="<b>Porque</b> cuando estás así de alterado, escuchar y elegir bien tus palabras se vuelve más difícil."></div>
+<button class="primary" onclick="go('yellAfter60')" data-en="Give me 60 seconds" data-es="Dame 60 segundos"></button>
+</section>
+
+<section id="defensive" class="screen">
+<button class="back" onclick="goBack()" data-en="← Home" data-es="← Inicio"></button>
+<div class="kicker" data-en="60-SECOND RESET" data-es="RESET DE 60 SEGUNDOS"></div>
+<h2 data-en="You don't have to win this moment." data-es="No tienes que ganar este momento."></h2>
+<p data-en="Is there at least 5% of what they're saying that you can honestly recognize as yours?" data-es="¿Hay al menos un 5% de lo que dice que puedes reconocer honestamente como tuyo?"></p>
+<div class="why" data-en="<b>Because</b> owning your part can interrupt the defend–attack cycle without forcing you to agree with everything." data-es="<b>Porque</b> reconocer tu parte puede cortar el ciclo defensa–ataque sin obligarte a estar de acuerdo con todo."></div>
+<button class="primary" onclick="go('defensiveYes')" data-en="Yes — there is something I can own" data-es="Sí — hay algo que puedo reconocer"></button>
+<button onclick="go('defensiveNo')" data-en="No — honestly, I don't see anything I agree with" data-es="No — sinceramente, no veo nada que pueda reconocer"></button>
+</section>
+
+<section id="criticism" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="kicker" data-en="SEPARATE TWO THINGS" data-es="SEPARA DOS COSAS"></div>
+<h2 data-en="Separate WHAT they're asking from HOW they're saying it." data-es="Separa LO que te está pidiendo de CÓMO te lo está diciendo."></h2>
+<div class="why" data-en="<b>Because</b> separating the request from the delivery can keep one painful moment from becoming two arguments at once." data-es="<b>Porque</b> separar la petición de la forma puede evitar que un momento difícil se convierta en dos discusiones al mismo tiempo."></div>
+<button class="primary" onclick="go('criticismSeparate')" data-en="Help me separate the request from the delivery" data-es="Ayúdame a separar lo que pide de cómo lo dice"></button>
+</section>
+
+<section id="feedback" class="screen">
+<div class="kicker" data-en="FOR NOW" data-es="POR AHORA"></div><h2 data-en="You interrupted the loop." data-es="Interrumpiste el ciclo."></h2>
+<p data-en="You didn't have to solve everything. The goal was to stop making the next few minutes worse." data-es="No tenías que resolverlo todo. El objetivo era evitar que los próximos minutos empeoraran."></p>
+<h2 data-en="Did this help you avoid making the moment worse?" data-es="¿Esto te ayudó a evitar que el momento empeorara?"></h2>
+<button data-en="👍 Yes"  onclick="go('feedbackYes')" data-es="👍 Sí"></button><button data-en="😐 A little"  onclick="go('feedbackSome')" data-es="😐 Un poco"></button><button data-en="👎 It made things worse"  onclick="go('feedbackWorse')" data-es="👎 Lo empeoró"></button>
+<button class="primary" onclick="go('home')" data-en="Return to the start for a different situation →" data-es="Volver al inicio para otra situación →"></button>
+</section>
+
+<section id="after" class="screen">
+<button class="back" onclick="go('home')" data-en="← Home" data-es="← Inicio"></button><div class="kicker" data-en="AFTER THE FIGHT" data-es="DESPUÉS DE LA PELEA"></div>
+<h2 data-en="What do you need help with now?" data-es="¿Con qué necesitas ayuda ahora?"></h2>
+<p class="muted" data-en="Choose what feels closest to what happened." data-es="Elige lo que más se parezca a lo que ocurrió."></p>
+<button onclick="go('regret')" data-en="💔 I said something I regret" data-es="💔 Dije algo de lo que me arrepiento"></button>
+<button onclick="go('wontTalk')" data-en="🤐 My partner doesn't want to talk" data-es="🤐 Mi pareja ya no quiere hablar"></button>
+<button onclick="go('iDontWantTalk')" data-en="🚫 I don't want to talk to my partner" data-es="🚫 No deseo hablarle a mi pareja"></button>
+<button onclick="go('neverApologizes')" data-en="😶 He/She never apologizes" data-es="😶 Él/Ella nunca se disculpa"></button>
+<button onclick="go('apologyFrustration')" data-en="🙏 I want to apologize, but it frustrates me that they don't do the same" data-es="🙏 Quiero disculparme, pero me frustra que mi pareja no haga lo mismo"></button>
+<button onclick="go('apologyWithoutReturn')" data-en="🕊️ I want to apologize without needing them to apologize too" data-es="🕊️ Quiero pedir perdón sin necesitar que mi pareja también lo haga"></button>
+<button onclick="go('apologyDidntHelp')" data-en="🙏 I tried to apologize, but it didn't help" data-es="🙏 Intenté disculparme, pero no ayudó"></button>
+<button onclick="go('silentNow')" data-en="🧊 Neither of us is talking now" data-es="🧊 Ahora ninguno de los dos habla"></button>
+<button onclick="go('fightAgain')" data-en="🔥 The argument started again" data-es="🔥 La discusión empezó otra vez"></button>
+</section>
+
+<section id="regret" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button><div class="kicker" data-en="AFTER THE FIGHT" data-es="DESPUÉS DE LA PELEA"></div>
+<h2 data-en="You said something you regret. Don't defend it yet." data-es="Dijiste algo de lo que te arrepientes. No intentes justificarlo todavía."></h2>
+<p data-en="First, repair the impact before explaining your intention." data-es="Primero repara el impacto antes de explicar tu intención."></p>
+<div class="why" data-en="<b>Because</b> an explanation given too early can sound like a justification instead of accountability." data-es="<b>Porque</b> una explicación demasiado rápida puede sonar a justificación en lugar de asumir responsabilidad."></div>
+<button class="primary" onclick="go('regretScript')" data-en="Help me say it" data-es="Ayúdame a decirlo"></button>
+</section>
+
+<section id="regretScript" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Try saying:" data-es="Prueba diciendo:"></h2>
+<div class="script" data-en="“What I said was hurtful. I shouldn't have said it that way. I'm sorry. I want to talk about what happened without attacking you.”" data-es="“Lo que dije estuvo mal y entiendo que pudo lastimarte. No debí decírtelo de esa manera. Lo siento. Quiero hablar de lo que pasó sin atacarnos.”"></div>
+<p class="muted" data-en="Don't add “but” yet. Give the apology room to land." data-es="No agregues un “pero” todavía. Deja que la disculpa tenga su propio espacio."></p>
+<button class="primary" onclick="go('regretNext')" data-en="I said it" data-es="Ya lo dije"></button>
+<button onclick="go('notReady')" data-en="I can't say that yet" data-es="Todavía no puedo decirlo"></button>
+</section>
+
+<section id="regretNext" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened after that?" data-es="¿Qué pasó después?"></h2>
+<button onclick="go('acceptedApology')" data-en="They accepted the apology" data-es="Aceptó la disculpa"></button>
+<button onclick="go('stillUpset')" data-en="They're still upset" data-es="Sigue molesto/a"></button>
+<button onclick="go('wontTalk')" data-en="They don't want to talk" data-es="No quiere hablar"></button>
+<button onclick="go('fightAgain')" data-en="The argument started again" data-es="La discusión empezó otra vez"></button>
+</section>
+
+<section id="before" class="screen">
+<button class="back" onclick="go('home')" data-en="← Home" data-es="← Inicio"></button>
+<div class="kicker" data-en="BEFORE THE CONVERSATION" data-es="ANTES DE CONVERSAR"></div>
+<h2 data-en="What makes this conversation difficult?" data-es="¿Qué hace difícil esta conversación?"></h2>
+<p class="muted" data-en="Choose what feels closest to what you're worried about." data-es="Elige lo que más se parezca a lo que te preocupa."></p>
+<button onclick="go('beforeWords')" data-en="💭 I don't know how to say what I feel" data-es="💭 No sé cómo decir lo que siento"></button>
+<button onclick="go('beforeDefensive')" data-en="🛡️ I'm afraid they'll get defensive" data-es="🛡️ Tengo miedo de que se ponga a la defensiva"></button>
+<button onclick="go('beforeFight')" data-en="🔥 I'm afraid it will turn into another fight" data-es="🔥 Tengo miedo de que termine en otra pelea"></button>
+<button onclick="go('beforeAsk')" data-en="🎯 I need to ask for a change" data-es="🎯 Necesito pedir un cambio"></button>
+<button onclick="go('beforeBoundary')" data-en="🚧 I need to set a boundary" data-es="🚧 Necesito poner un límite"></button>
+<button onclick="go('mindReading')" data-en="🧠 My partner expects me to know what they need without saying it" data-es="🧠 Mi pareja espera que yo sepa lo que necesita sin decírmelo"></button>
+<button onclick="go('shouldKnow')" data-en="💭 It bothers me to ask for something I feel they should notice on their own" data-es="💭 Me molesta tener que pedir algo que siento que debería nacerle"></button>
+</section>
+<section id="stillUpset" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="AFTER THE APOLOGY" data-es="DESPUÉS DE DISCULPARTE"></div>
+<h2 data-en="Your apology doesn't require them to feel better immediately." data-es="Tu disculpa no obliga a la otra persona a sentirse mejor inmediatamente."></h2>
+<p data-en="You can take responsibility for repairing the damage. You can't decide how quickly the other person processes it." data-es="Puedes hacerte responsable de reparar el daño. No puedes decidir cuánto tiempo necesita la otra persona para procesarlo."></p>
+<div class="why" data-en="<b>Because</b> pushing for immediate forgiveness can turn your apology into another demand." data-es="<b>Porque</b> presionar para que te perdonen inmediatamente puede convertir tu disculpa en una nueva exigencia."></div>
+<button class="primary" onclick="go('stillUpsetScript')" data-en="What should I say?" data-es="¿Qué puedo decir?"></button>
+</section>
+<section id="stillUpsetScript" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="DON'T PUSH" data-es="NO PRESIONES"></div>
+<p class="muted" data-en="Avoid:" data-es="Evita decir:"></p>
+<div class="script" data-en="“I already apologized. What else do you want me to do?”" data-es="“Ya te pedí disculpas. ¿Qué más quieres que haga?”"></div>
+<p class="muted" data-en="Try instead:" data-es="Prueba mejor:"></p>
+<div class="script" data-en="“I understand you're still upset. I don't expect you to feel better immediately. When you're ready to talk, I'm willing to listen.”" data-es="“Entiendo que sigas molesto/a. No espero que se te pase inmediatamente. Cuando quieras hablar, estoy dispuesto/a a escucharte.”"></div>
+<button class="primary" onclick="go('stillUpsetNext')" data-en="I said it" data-es="Ya lo dije"></button>
+<button onclick="go('stillUpsetNext')" data-en="I gave them space instead" data-es="Preferí darle espacio"></button>
+</section>
+<section id="stillUpsetNext" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened next?" data-es="¿Qué pasó después?"></h2>
+<button onclick="go('talkingAgain')" data-en="They started talking to me" data-es="Empezó a hablar conmigo"></button>
+<button onclick="go('distantNow')" data-en="They're still distant" data-es="Sigue distante"></button>
+<button onclick="go('spaceAsked')" data-en="They asked for space" data-es="Me pidió espacio"></button>
+<button onclick="go('fightAgain')" data-en="The argument started again" data-es="La discusión empezó otra vez"></button>
+</section>
+<section id="notReady" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="NOT YET" data-es="TODAVÍA NO"></div>
+<h2 data-en="Don't force an apology you don't mean yet." data-es="No fuerces una disculpa que todavía no sientes."></h2>
+<p data-en="If you're still angry, defensive, or confused, you can pause without disappearing." data-es="Si todavía estás molesto/a, a la defensiva o confundido/a, puedes hacer una pausa sin desaparecer."></p>
+<div class="why" data-en="<b>Because</b> a forced apology can sound empty and reopen the argument." data-es="<b>Porque</b> una disculpa forzada puede sonar vacía y volver a abrir la discusión."></div>
+<button class="primary" onclick="go('notReadyScript')" data-en="Help me pause without making it worse" data-es="Ayúdame a hacer una pausa sin empeorarlo"></button>
+</section>
+
+<section id="notReadyScript" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Try saying:" data-es="Prueba diciendo:"></h2>
+<div class="script" data-en="“I don't want to give you an apology just to end this. I need a little time to calm down and think about what happened. I do want to come back to this.”" data-es="“No quiero pedirte disculpas solo para terminar esta discusión. Necesito un poco de tiempo para calmarme y pensar en lo que pasó. Sí quiero retomar esta conversación.”"></div>
+<button class="primary" onclick="go('notReadyNext')" data-en="I said it" data-es="Ya lo dije"></button>
+<button onclick="go('iDontWantTalk')" data-en="Actually, I don't want to talk to my partner" data-es="En realidad, no deseo hablarle a mi pareja"></button>
+</section>
+
+<section id="notReadyNext" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What do you need now?" data-es="¿Qué necesitas ahora?"></h2>
+<button onclick="go('dontTalkCalm')" data-en="I need time to calm down" data-es="Necesito tiempo para calmarme"></button>
+<button onclick="go('feelingsCheck')" data-en="I need to understand what I'm feeling" data-es="Necesito entender lo que estoy sintiendo"></button>
+<button onclick="go('iDontWantTalk')" data-en="I still don't want to talk to my partner" data-es="Sigo sin querer hablarle a mi pareja"></button>
+</section>
+
+<section id="iDontWantTalk" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="AFTER THE FIGHT" data-es="DESPUÉS DE LA PELEA"></div>
+<h2 data-en="You don't have to talk right now." data-es="No tienes que hablar con tu pareja ahora mismo."></h2>
+<p data-en="First decide what your silence means." data-es="Primero identifica qué significa tu silencio en este momento."></p>
+<div class="why" data-en="<b>Because</b> taking space and using silence to punish someone are not the same thing." data-es="<b>Porque</b> tomar distancia para regularte y usar el silencio para castigar no son lo mismo."></div>
+<button onclick="go('dontTalkCalm')" data-en="I need time to calm down" data-es="Necesito tiempo para calmarme"></button>
+<button onclick="go('dontTalkHurt')" data-en="I'm too hurt to talk" data-es="Estoy demasiado herido/a para hablar"></button>
+<button onclick="go('dontTalkWords')" data-en="I don't know what to say yet" data-es="Todavía no sé qué decir"></button>
+<button onclick="go('dontTalkContact')" data-en="I don't want contact right now" data-es="No quiero tener contacto por ahora"></button>
+</section>
+<section id="acceptedApology" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="REPAIR, THEN MOVE FORWARD" data-es="REPARA Y LUEGO AVANZA"></div>
+<h2 data-en="If the apology was accepted, don't turn it into a trial about who was more wrong." data-es="Si aceptó tu disculpa, no conviertas este momento en un juicio sobre quién estuvo más equivocado."></h2>
+<p data-en="You can still talk about what hurt you. Just don't attach your complaint to the apology you just gave." data-es="Todavía puedes hablar de lo que te lastimó. Solo evita pegar tu reclamo a la disculpa que acabas de dar."></p>
+<div class="why" data-en="<b>Because</b> adding “but you also...” can make a sincere apology feel transactional." data-es="<b>Porque</b> agregar “pero tú también...” puede hacer que una disculpa sincera se sienta como un intercambio."></div>
+<button class="primary" onclick="go('acceptedChoice')" data-en="What do I do now?" data-es="¿Qué hago ahora?"></button>
+</section>
+
+<section id="acceptedChoice" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What do you need next?" data-es="¿Qué necesitas ahora?"></h2>
+<button onclick="go('acceptedClose')" data-en="I just want to close this well" data-es="Solo quiero cerrar esto bien"></button>
+<button onclick="go('acceptedMySide')" data-en="I also need to explain what hurt me" data-es="También necesito explicar lo que me lastimó"></button>
+<button onclick="go('wontTalkSpace')" data-en="I need some space now" data-es="Ahora necesito un poco de espacio"></button>
+</section>
+
+<section id="acceptedClose" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Close without reopening the fight." data-es="Cierra sin volver a abrir la pelea."></h2>
+<div class="script" data-en="“Thank you for hearing me. I don't want us to keep hurting each other over this. Let's leave it here for now.”" data-es="“Gracias por escucharme. No quiero que sigamos lastimándonos por esto. Dejémoslo aquí por ahora.”"></div>
+<div class="why" data-en="<b>Because</b> not every repaired conflict needs another round of analysis immediately." data-es="<b>Porque</b> no todo conflicto reparado necesita otra ronda de análisis inmediatamente."></div>
+<button class="primary" onclick="go('home')" data-en="Finish" data-es="Terminar"></button>
+</section>
+
+<section id="acceptedMySide" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Your apology doesn't erase your side of the story." data-es="Tu disculpa no borra lo que tú también necesitas decir."></h2>
+<p data-en="Separate the two conversations: first your responsibility, then what hurt you." data-es="Separa las dos conversaciones: primero tu responsabilidad y luego aquello que te lastimó."></p>
+<div class="script" data-en="“There's something that hurt me too. I don't want to use it to cancel my apology. Can we talk about that separately?”" data-es="“Hay algo que también me lastimó. No quiero usarlo para anular mi disculpa. ¿Podemos hablar de eso por separado?”"></div>
+<div class="why" data-en="<b>Because</b> separating accountability from your complaint makes both messages easier to hear." data-es="<b>Porque</b> separar tu responsabilidad de tu reclamo hace que ambos mensajes sean más fáciles de escuchar."></div>
+<button class="primary" onclick="go('beforeWordsHurt')" data-en="Help me explain what hurt me" data-es="Ayúdame a explicar lo que me lastimó"></button>
+</section>
+
+<section id="neverApologizes" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="AFTER THE FIGHT" data-es="DESPUÉS DE LA PELEA"></div>
+<h2 data-en="It feels like you're always the one repairing things." data-es="Sientes que siempre eres tú quien termina reparando las cosas."></h2>
+<p data-en="What affects you most about that?" data-es="¿Qué es lo que más te afecta de eso?"></p>
+<button onclick="go('neverAcknowledge')" data-en="They don't acknowledge when they hurt me" data-es="Siento que nunca reconoce cuando me lastima"></button>
+<button onclick="go('unequalApology')" data-en="I end up apologizing even when we both had responsibility" data-es="Termino disculpándome yo, incluso cuando ambos tuvimos responsabilidad"></button>
+<button onclick="go('actsNormal')" data-en="They act afterward as if nothing happened" data-es="Después actúa como si nada hubiera pasado"></button>
+<button onclick="go('waitingApology')" data-en="I wait for an apology that never comes" data-es="Espero una disculpa y nunca llega"></button>
+<button onclick="go('repairFatigue')" data-en="I'm tired of being the one who tries to fix things" data-es="Ya me cansé de ser quien intenta arreglar las cosas"></button>
+</section>
+<section id="wontTalk" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="AFTER THE APOLOGY" data-es="DESPUÉS DE DISCULPARTE"></div>
+<h2 data-en="Don't chase the conversation." data-es="No persigas la conversación."></h2>
+<p data-en="If your partner doesn't want to talk right now, you can leave the door open without demanding an answer." data-es="Si tu pareja no quiere hablar ahora, puedes dejar abierta la conversación sin exigir una respuesta."></p>
+<div class="why" data-en="<b>Because</b> insisting on talking can make your attempt to repair feel like pressure." data-es="<b>Porque</b> insistir en hablar puede hacer que tu intento de reparar se sienta como presión."></div>
+<button class="primary" onclick="go('wontTalkScript')" data-en="What can I say?" data-es="¿Qué puedo decir?"></button>
+</section>
+
+<section id="wontTalkScript" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Leave the door open." data-es="Deja la puerta abierta."></h2>
+<div class="script" data-en="“I understand you don't want to talk right now. I won't push you. When you're ready, I'd like us to talk about what happened.”" data-es="“Entiendo que no quieras hablar ahora. No voy a presionarte. Cuando estés listo/a, me gustaría que podamos hablar de lo que pasó.”"></div>
+<button class="primary" onclick="go('wontTalkNext')" data-en="I said it" data-es="Ya lo dije"></button>
+<button onclick="go('wontTalkSpace')" data-en="I prefer not to say anything else" data-es="Prefiero no decir nada más"></button>
+</section>
+
+<section id="wontTalkNext" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened after you gave them space?" data-es="¿Qué pasó después de darle espacio?"></h2>
+<button onclick="go('wontTalkReturned')" data-en="They came back to talk" data-es="Volvió para hablar"></button>
+<button onclick="go('wontTalkStill')" data-en="They still don't want to talk" data-es="Todavía no quiere hablar"></button>
+<button onclick="go('distantNow')" data-en="They seem calmer, but distant" data-es="Parece más tranquilo/a, pero distante"></button>
+<button onclick="go('regretRestart')" data-en="The argument started again" data-es="La discusión empezó otra vez"></button>
+</section>
+
+<section id="wontTalkSpace" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Silence can also be a pause." data-es="El silencio también puede ser una pausa."></h2>
+<p data-en="You don't have to keep explaining yourself. Give the moment some space and decide later whether the conversation still needs to happen." data-es="No tienes que seguir explicándote. Dale espacio al momento y decide después si la conversación todavía necesita retomarse."></p>
+<div class="why" data-en="<b>Because</b> continuing to pursue a response can keep both of you inside the conflict." data-es="<b>Porque</b> seguir buscando una respuesta puede mantenerlos a ambos dentro del conflicto."></div>
+<button class="primary" onclick="go('wontTalkNext')" data-en="Check what happened after the pause" data-es="Revisar qué pasó después de la pausa"></button>
+</section>
+
+<section id="wontTalkReturned" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="They came back. Don't make them regret it." data-es="Volvió para hablar. No conviertas ese regreso en otra pelea."></h2>
+<p data-en="Start by listening before defending your version." data-es="Empieza escuchando antes de defender tu versión."></p>
+<div class="script" data-en="“I'm listening. Tell me what you need me to understand about what happened.”" data-es="“Te escucho. Dime qué necesitas que entienda sobre lo que pasó.”"></div>
+<div class="why" data-en="<b>Because</b> returning to the conversation is easier when it doesn't immediately become another debate." data-es="<b>Porque</b> volver a la conversación es más fácil cuando no se convierte inmediatamente en otro debate."></div>
+<button class="primary" onclick="go('returnedConversation')" data-en="Help me continue without restarting the fight" data-es="Ayúdame a continuar sin reiniciar la pelea"></button>
+</section>
+
+<section id="wontTalkStill" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You can leave the door open. You don't have to stand in the doorway." data-es="Puedes dejar la puerta abierta. No tienes que quedarte esperando en ella."></h2>
+<p data-en="You've already shown willingness to talk. For now, stop trying to get an immediate response." data-es="Ya mostraste disposición para hablar. Por ahora, deja de buscar una respuesta inmediata."></p>
+<div class="why" data-en="<b>Because</b> respecting space is different from abandoning the issue." data-es="<b>Porque</b> respetar el espacio es diferente de abandonar el problema."></div>
+<button onclick="go('resumeLaterPrep')" data-en="Help me prepare how to resume later" data-es="Ayúdame a preparar cómo retomarlo después"></button>
+<button class="primary" onclick="go('home')" data-en="Finish for now" data-es="Terminar por ahora"></button>
+</section>
+
+<section id="regretRestart" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="The fight restarted. Stop trying to finish the conversation right now." data-es="La pelea empezó otra vez. No intentes terminar la conversación ahora mismo."></h2>
+<p data-en="If both of you are escalating again, return to de-escalation before trying to solve the original problem." data-es="Si ambos están volviendo a alterarse, primero baja la intensidad antes de intentar resolver el problema original."></p>
+<div class="why" data-en="<b>Because</b> trying to solve the issue while the conflict is escalating can create a second fight on top of the first one." data-es="<b>Porque</b> intentar resolver el problema mientras la discusión escala puede crear una segunda pelea encima de la primera."></div>
+<button class="primary" onclick="restartAt('escalationReset')" data-en="Help me stop the escalation" data-es="Ayúdame a detener la escalada"></button>
+</section>
+<section id="fightAgain" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="THE FIGHT RESTARTED" data-es="LA PELEA EMPEZÓ OTRA VEZ"></div>
+<h2 data-en="Stop trying to finish the original conversation." data-es="Deja de intentar terminar la conversación original."></h2>
+<p data-en="Right now, the goal changes: don't solve it — lower the intensity first." data-es="Ahora el objetivo cambia: no intentes resolverlo; primero baja la intensidad."></p>
+<div class="why" data-en="<b>Because</b> once the argument is escalating again, adding more reasons or explanations can give the conflict more material." data-es="<b>Porque</b> cuando la discusión vuelve a escalar, agregar más razones o explicaciones puede darle más material al conflicto."></div>
+<button class="primary" onclick="go('fightAgainChoice')" data-en="Help me stop this round" data-es="Ayúdame a detener esta nueva pelea"></button>
+</section>
+<section id="fightAgainChoice" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What's happening right now?" data-es="¿Qué está pasando ahora mismo?"></h2>
+<button onclick="go('fightAgainYelling')" data-en="We're raising our voices" data-es="Estamos levantando la voz"></button>
+<button onclick="go('fightAgainOldStuff')" data-en="We're bringing up old problems" data-es="Estamos sacando problemas del pasado"></button>
+<button onclick="go('fightAgainProving')" data-en="I'm trying to prove I'm right" data-es="Estoy intentando demostrar que tengo razón"></button>
+<button onclick="restartAt('escalationReset')" data-en="Something else — take me to RIGHT NOW" data-es="Es otra cosa — llévame a AHORA MISMO"></button>
+</section>
+<section id="fightAgainYelling" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Lower your volume before you improve your argument." data-es="Baja el volumen antes de intentar mejorar tu argumento."></h2>
+<div class="script" data-en="“I don't want us to keep escalating. I'm going to stop for a moment and we can come back to this when we're calmer.”" data-es="“No quiero que sigamos escalando esta pelea. Voy a parar un momento y podemos retomar esto cuando estemos más tranquilos.”"></div>
+<div class="why" data-en="<b>Because</b> the next useful move is regulation, not a better comeback." data-es="<b>Porque</b> el siguiente movimiento útil es regularte, no encontrar una mejor respuesta para contraatacar."></div>
+<button class="primary" onclick="restartAt('escalationReset')" data-en="I need more help calming this down" data-es="Necesito más ayuda para bajar la intensidad"></button>
+</section>
+<section id="fightAgainOldStuff" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="One fight at a time." data-es="Una pelea a la vez."></h2>
+<p data-en="Old problems may matter, but adding them now makes it harder to resolve the issue in front of you." data-es="Los problemas del pasado pueden ser importantes, pero traerlos ahora hace más difícil resolver lo que tienen delante."></p>
+<div class="script" data-en="“That matters too, but if we mix everything together we're not going to solve any of it. Let's stay with what happened today.”" data-es="“Eso también importa, pero si mezclamos todo no vamos a resolver nada. Quedémonos por ahora con lo que pasó hoy.”"></div>
+<button class="primary" onclick="restartAt('escalationReset')" data-en="Help me de-escalate" data-es="Ayúdame a bajar la intensidad"></button>
+</section>
+<section id="fightAgainProving" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Being right won't help if the conversation collapses." data-es="Tener la razón no ayuda si la conversación se rompe."></h2>
+<p data-en="Pause the evidence, examples and counterarguments for a moment." data-es="Pausa por un momento las pruebas, los ejemplos y los contraargumentos."></p>
+<div class="script" data-en="“I can feel myself trying to prove my point instead of understanding what we're actually fighting about. Let me stop.”" data-es="“Me doy cuenta de que estoy intentando demostrar mi punto en vez de entender por qué estamos peleando. Déjame parar.”"></div>
+<div class="why" data-en="<b>Because</b> persuasion is much harder when both people are defending their position instead of processing the other person's message." data-es="<b>Porque</b> persuadir es mucho más difícil cuando ambos están defendiendo su posición en lugar de procesar el mensaje del otro."></div>
+<button class="primary" onclick="restartAt('escalationReset')" data-en="Return to RIGHT NOW" data-es="Volver a AHORA MISMO"></button>
+</section>
+<section id="dontTalkCalm" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="TAKE A PAUSE" data-es="TOMA UNA PAUSA"></div>
+<h2 data-en="A pause works better when it doesn't feel like disappearance." data-es="Una pausa funciona mejor cuando no se siente como una desaparición."></h2>
+<div class="script" data-en="“I'm too activated to talk well right now. I need some time to calm down. I don't want to ignore this; let's come back to it later.”" data-es="“Estoy demasiado alterado/a para hablar bien ahora. Necesito un tiempo para calmarme. No quiero ignorar esto; retomémoslo después.”"></div>
+<div class="why" data-en="<b>Because</b> naming the pause and your intention to return can reduce uncertainty without forcing the conversation now." data-es="<b>Porque</b> explicar la pausa y tu intención de retomar puede reducir la incertidumbre sin forzar la conversación ahora."></div>
+<button onclick="restartAt('before')" data-en="Help me prepare how to resume later" data-es="Ayúdame a preparar cómo retomarlo después"></button>
+<button class="primary" onclick="go('home')" data-en="Take the pause" data-es="Tomar la pausa"></button>
+</section>
+<section id="dontTalkHurt" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="YOU'RE HURT" data-es="ESTÁS HERIDO/A"></div>
+<h2 data-en="You don't have to explain the whole wound right now." data-es="No tienes que explicar todo lo que te dolió ahora mismo."></h2>
+<p data-en="You can communicate the boundary without starting another argument." data-es="Puedes comunicar el límite sin empezar otra discusión."></p>
+<div class="script" data-en="“I'm too hurt to talk about this well right now. I need some space before I can have this conversation.”" data-es="“Estoy demasiado herido/a para hablar bien de esto ahora. Necesito un poco de espacio antes de poder tener esta conversación.”"></div>
+<div class="why" data-en="<b>Because</b> describing your state is different from attacking the person who hurt you." data-es="<b>Porque</b> describir cómo estás es diferente de atacar a la persona que te lastimó."></div>
+<button onclick="restartAt('before')" data-en="Help me prepare how to resume later" data-es="Ayúdame a preparar cómo retomarlo después"></button>
+<button class="primary" onclick="go('home')" data-en="Pause here" data-es="Pausar aquí"></button>
+</section>
+<section id="dontTalkWords" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="YOU DON'T HAVE THE WORDS YET" data-es="TODAVÍA NO TIENES LAS PALABRAS"></div>
+<h2 data-en="Don't improvise a difficult conversation just to fill the silence." data-es="No improvises una conversación difícil solo para llenar el silencio."></h2>
+<div class="script" data-en="“I don't know how to explain what I'm feeling yet. I need some time to put it into words before we talk.”" data-es="“Todavía no sé cómo explicar lo que estoy sintiendo. Necesito un poco de tiempo para ponerlo en palabras antes de que hablemos.”"></div>
+<div class="why" data-en="<b>Because</b> taking time to organize what you mean can be more useful than speaking only to end the discomfort." data-es="<b>Porque</b> tomarte un tiempo para ordenar lo que quieres decir puede ser más útil que hablar solo para terminar con la incomodidad."></div>
+<button class="primary" onclick="restartAt('before')" data-en="Help me prepare the conversation" data-es="Ayúdame a preparar la conversación"></button>
+</section>
+<section id="dontTalkContact" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="NO CONTACT FOR NOW" data-es="SIN CONTACTO POR AHORA"></div>
+<h2 data-en="Be clear about the boundary without using silence as a weapon." data-es="Sé claro/a con el límite sin usar el silencio como arma."></h2>
+<div class="script" data-en="“I don't want contact right now. I need space. If and when I'm ready to talk, I'll let you know.”" data-es="“No quiero tener contacto por ahora. Necesito espacio. Si estoy listo/a para hablar más adelante, te lo haré saber.”"></div>
+<div class="why" data-en="<b>Because</b> a stated boundary is clearer than making the other person guess what your silence means." data-es="<b>Porque</b> un límite expresado claramente es distinto de hacer que la otra persona adivine qué significa tu silencio."></div>
+<p class="muted" data-en="If there are threats, coercion or violence, prioritize safety and outside support rather than a communication script." data-es="Si existen amenazas, coerción o violencia, prioriza tu seguridad y apoyo externo en lugar de un guion de comunicación."></p>
+<button onclick="restartAt('before')" data-en="Help me prepare how to resume later" data-es="Ayúdame a preparar cómo retomarlo después"></button>
+<button class="primary" onclick="go('home')" data-en="Finish for now" data-es="Terminar por ahora"></button>
+</section>
+<section id="beforeWords" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="FIND THE MESSAGE FIRST" data-es="PRIMERO ENCUENTRA EL MENSAJE"></div>
+<h2 data-en="Don't start with the perfect sentence. Start with the one thing you need them to understand." data-es="No empieces buscando la frase perfecta. Empieza por aquello que necesitas que la otra persona entienda."></h2>
+<p data-en="Which sentence is closest?" data-es="¿Cuál de estas frases se acerca más a lo que necesitas decir?"></p>
+<button onclick="go('beforeWordsHurt')" data-en="Something you did hurt me" data-es="Algo que hiciste me lastimó"></button>
+<button onclick="go('beforeWordsNeed')" data-en="I need something to change between us" data-es="Necesito que algo cambie entre nosotros"></button>
+<button onclick="go('beforeWordsOwn')" data-en="I need to explain my part too" data-es="También necesito explicar mi parte"></button>
+</section>
+
+<section id="beforeWordsHurt" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Describe the impact before assigning a motive." data-es="Describe el impacto antes de atribuir una intención."></h2>
+<div class="script" data-en="“There's something that happened that stayed with me. When ___ happened, I felt ___. I want to explain why it affected me without turning this into a fight.”" data-es="“Hay algo que pasó y se me quedó dando vueltas. Cuando ocurrió ___, me sentí ___. Quiero explicarte por qué me afectó sin convertir esto en una pelea.”"></div>
+<div class="why" data-en="<b>Because</b> describing what happened and its impact gives the other person less to defend against than telling them why you think they did it." data-es="<b>Porque</b> describir lo que ocurrió y cómo te afectó deja menos espacio para defenderse que afirmar por qué crees que la otra persona lo hizo."></div>
+<button class="primary" onclick="go('beforeReady')" data-en="I'm ready to talk" data-es="Estoy listo/a para hablar"></button>
+</section>
+
+<section id="beforeWordsNeed" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Turn the complaint into a specific request." data-es="Convierte el reclamo en una petición concreta."></h2>
+<div class="script" data-en="“There's something I'd like us to do differently. Instead of ___, could we try ___?”" data-es="“Hay algo que me gustaría que hiciéramos diferente. En lugar de ___, ¿podríamos intentar ___?”"></div>
+<div class="why" data-en="<b>Because</b> knowing what you want to happen next is easier to act on than only hearing what went wrong." data-es="<b>Porque</b> saber qué te gustaría que ocurra de ahora en adelante es más fácil de llevar a la práctica que escuchar solamente qué salió mal."></div>
+<button class="primary" onclick="go('beforeReady')" data-en="I'm ready to talk" data-es="Estoy listo/a para hablar"></button>
+</section>
+
+<section id="beforeWordsOwn" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Own your part without erasing theirs." data-es="Reconoce tu parte sin borrar la de la otra persona."></h2>
+<div class="script" data-en="“I can see there are things I could have handled differently. I want to own that, and I also want us to talk about what affected me.”" data-es="“Puedo ver que hay cosas que yo podría haber manejado de otra manera. Quiero hacerme cargo de eso y también quiero que podamos hablar de lo que me afectó.”"></div>
+<div class="why" data-en="<b>Because</b> accountability doesn't require you to surrender the rest of your perspective." data-es="<b>Porque</b> asumir tu responsabilidad no significa renunciar al resto de tu perspectiva."></div>
+<button class="primary" onclick="go('beforeReady')" data-en="I'm ready to talk" data-es="Estoy listo/a para hablar"></button>
+</section>
+
+<section id="beforeReady" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="ONE LAST CHECK" data-es="UNA ÚLTIMA REVISIÓN"></div>
+<h2 data-en="Are you calm enough to hear an answer you may not like?" data-es="¿Estás lo suficientemente calmado/a para escuchar una respuesta que quizá no te guste?"></h2>
+<button class="primary" onclick="go('conversationStart')" data-en="Yes — I'm ready" data-es="Sí — estoy listo/a"></button>
+<button onclick="go('preConversationRegulate')" data-en="Not yet — help me regulate first" data-es="Todavía no — ayúdame a regularme primero"></button>
+</section>
+
+<section id="beforeDefensive" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Start in a way that doesn't force them to defend a verdict." data-es="Empieza de una forma que no obligue a la otra persona a defenderse de un veredicto."></h2>
+<div class="script" data-en="“I want to talk about something that affected me. I'm not trying to tell you what your intention was; I want to explain how I experienced it.”" data-es="“Quiero hablar de algo que me afectó. No intento decirte cuál fue tu intención; quiero explicarte cómo lo viví yo.”"></div>
+<div class="why" data-en="<b>Because</b> separating impact from assumed intention can lower the need to defend motives." data-es="<b>Porque</b> separar el impacto de la intención que suponemos puede reducir la necesidad de defender las propias motivaciones."></div>
+<button class="primary" onclick="go('beforeReady')" data-en="Check if I'm ready to start" data-es="Comprobar si estoy listo/a para empezar"></button>
+</section>
+
+<section id="beforeFight" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Agree on the exit before you enter." data-es="Acuerden cómo pausar antes de empezar."></h2>
+<div class="script" data-en="“I want to talk about something important, but I don't want us to end up fighting. If either of us gets too upset, can we pause and come back to it?”" data-es="“Quiero hablar de algo importante, pero no quiero que terminemos peleando. Si alguno de los dos se altera demasiado, ¿podemos hacer una pausa y retomarlo después?”"></div>
+<div class="why" data-en="<b>Because</b> agreeing on a pause while you're calm is easier than negotiating one in the middle of escalation." data-es="<b>Porque</b> acordar una pausa cuando están tranquilos es más fácil que negociarla en medio de una escalada."></div>
+<button class="primary" onclick="go('beforeReady')" data-en="Check if I'm ready to start" data-es="Comprobar si estoy listo/a para empezar"></button>
+</section>
+
+<section id="beforeAsk" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Ask for a behavior, not a personality transplant." data-es="Pide una conducta, no un cambio completo de personalidad."></h2>
+<div class="script" data-en="“When ___ happens, it affects me in ___. Could we try ___ next time?”" data-es="“Cuando ocurre ___, me afecta de esta manera: ___. ¿Podríamos intentar ___ la próxima vez?”"></div>
+<div class="why" data-en="<b>Because</b> a specific, observable request is easier to understand and respond to than “you need to change.”" data-es="<b>Porque</b> una petición específica y observable es más fácil de entender y responder que decir “tienes que cambiar”."></div>
+<button class="primary" onclick="go('beforeReady')" data-en="Check if I'm ready to start" data-es="Comprobar si estoy listo/a para empezar"></button>
+</section>
+
+<section id="beforeBoundary" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="A boundary explains what you will do, not how you will control them." data-es="Un límite explica lo que tú harás, no cómo controlarás a la otra persona."></h2>
+<div class="script" data-en="“I want to keep talking, but I won't continue the conversation if we're insulting each other. If that happens, I'm going to pause and we can try again later.”" data-es="“Quiero seguir hablando, pero no voy a continuar la conversación si empezamos a insultarnos. Si eso ocurre, voy a hacer una pausa y podemos intentarlo de nuevo después.”"></div>
+<div class="why" data-en="<b>Because</b> a workable boundary focuses on your own action instead of demanding control over the other person's behavior." data-es="<b>Porque</b> un límite aplicable se centra en tu propia acción en lugar de intentar controlar la conducta de la otra persona."></div>
+<button class="primary" onclick="go('beforeReady')" data-en="Check if I'm ready to start" data-es="Comprobar si estoy listo/a para empezar"></button>
+</section>
+<section id="conversationStart" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="START THE CONVERSATION" data-es="INICIA LA CONVERSACIÓN"></div>
+<h2 data-en="Start slowly. Your first goal is not agreement — it's keeping the conversation open." data-es="Empieza despacio. Tu primer objetivo no es lograr acuerdo; es mantener abierta la conversación."></h2>
+<div class="script" data-en="“There's something I'd like to talk about. I don't want this to become a fight. Can I tell you how I'm seeing it, and then I want to hear your side?”" data-es="“Hay algo de lo que me gustaría hablar. No quiero que esto se convierta en una pelea. ¿Puedo contarte cómo lo estoy viendo y después escuchar tu perspectiva?”"></div>
+<div class="why" data-en="<b>Because</b> inviting a response signals that this is a conversation, not a verdict." data-es="<b>Porque</b> invitar a la otra persona a responder ayuda a comunicar que esto es una conversación, no un veredicto."></div>
+<button class="primary" onclick="go('conversationReaction')" data-en="I started the conversation" data-es="Ya inicié la conversación"></button>
+</section>
+
+<section id="conversationReaction" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="How did they respond?" data-es="¿Cómo respondió?"></h2>
+<button onclick="go('theyListened')" data-en="They listened" data-es="Me escuchó"></button>
+<button onclick="go('partnerDefensive')" data-en="They got defensive" data-es="Se puso a la defensiva"></button>
+<button onclick="restartAt('escalationReset')" data-en="The conversation started escalating" data-es="La conversación empezó a escalar"></button>
+<button onclick="go('wontTalk')" data-en="They don't want to talk" data-es="No quiere hablar"></button>
+</section>
+
+<section id="mindReading" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="DON'T MAKE SILENCE DO ALL THE WORK" data-es="NO LE PIDAS AL SILENCIO QUE LO DIGA TODO"></div>
+<h2 data-en="Silence can communicate that something is wrong. It doesn't necessarily communicate what is wrong." data-es="Tu silencio puede comunicar que algo pasa. No necesariamente comunica qué pasa."></h2>
+<p data-en="A look, a sigh, saying their name, or withdrawing may show discomfort — but the other person still has to guess what it means." data-es="Una mirada, un suspiro, decir su nombre o apartarte puede mostrar incomodidad, pero la otra persona todavía tiene que adivinar qué significa."></p>
+<div class="why" data-en="<b>Because</b> people can notice a signal without accurately reading the thought behind it." data-es="<b>Porque</b> una persona puede notar una señal sin interpretar correctamente el pensamiento que hay detrás."></div>
+<h2 data-en="Try making the hidden message explicit." data-es="Prueba haciendo explícito el mensaje oculto."></h2>
+<div class="script" data-en="“I can tell something is bothering you, but I don't want to guess and get it wrong. Can you tell me what you need me to understand?”" data-es="“Noto que algo te está molestando, pero no quiero adivinar y equivocarme. ¿Puedes decirme qué necesitas que entienda?”"></div>
+<button class="primary" onclick="go('phraseReady')" data-en="Use this" data-es="Usar esta frase"></button>
+</section>
+
+<section id="shouldKnow" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="WHEN YOU THINK: “I SHOULDN'T HAVE TO ASK”" data-es="CUANDO PIENSAS: “NO DEBERÍA TENER QUE PEDIRLO”"></div>
+<h2 data-en="Having to ask doesn't automatically mean your partner doesn't care." data-es="Tener que pedirlo no significa automáticamente que a tu pareja no le importe."></h2>
+<p data-en="Two people can share a home and still notice different things, assign different priorities, or have different thresholds for when something needs attention." data-es="Dos personas pueden compartir una casa y aun así notar cosas distintas, asignar prioridades diferentes o tener distintos umbrales sobre cuándo algo necesita atención."></p>
+<div class="why" data-en="<b>Because</b> expecting identical priorities can turn an unspoken expectation into a test the other person doesn't know they're taking." data-es="<b>Porque</b> esperar prioridades idénticas puede convertir una expectativa no expresada en una prueba que la otra persona ni siquiera sabe que está rindiendo."></div>
+<button class="primary" onclick="go('shouldKnowOtherSide')" data-en="But I don't want to ask for everything" data-es="Pero no quiero tener que pedir todo"></button>
+<button onclick="go('shouldKnowRequest')" data-en="Help me ask without sounding demanding" data-es="Ayúdame a pedirlo sin sonar exigente"></button>
+</section>
+
+<section id="shouldKnowOtherSide" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="That matters too." data-es="Eso también importa."></h2>
+<p data-en="Sometimes the frustration isn't only about the task. It's about feeling responsible for noticing, remembering and assigning everything." data-es="A veces la frustración no es solamente por la tarea. Es sentir que siempre recae sobre ti detectar, recordar y asignar todo lo que hay que hacer."></p>
+<div class="why" data-en="<b>Because</b> “just tell me what to do” can solve today's task while leaving the responsibility for noticing tomorrow's tasks with the same person." data-es="<b>Porque</b> “solo dime qué hacer” puede resolver la tarea de hoy mientras deja en la misma persona la responsabilidad de detectar las tareas de mañana."></div>
+<div class="script" data-en="“I don't expect us to notice exactly the same things. But I don't want either of us to carry all the responsibility for noticing what needs to be done. Can we agree on what each of us owns?”" data-es="“No espero que los dos notemos exactamente las mismas cosas. Pero tampoco quiero que uno de nosotros cargue con toda la responsabilidad de detectar lo que hay que hacer. ¿Podemos acordar de qué se encarga cada uno?”"></div>
+<button class="primary" onclick="go('approachReady')" data-en="Use this approach" data-es="Usar este enfoque"></button>
+</section>
+
+<section id="shouldKnowRequest" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Make the request visible instead of testing whether they notice it." data-es="Haz visible la petición en lugar de poner a prueba si la otra persona la detecta."></h2>
+<div class="script" data-en="“This matters to me more than it may matter to you. Could you help me with ___ today?”" data-es="“Esto es importante para mí, aunque quizá para ti no tenga la misma prioridad. ¿Podrías ayudarme hoy con ___?”"></div>
+<div class="why" data-en="<b>Because</b> a clear request gives the other person a real opportunity to respond instead of being evaluated against an expectation they may not know exists." data-es="<b>Porque</b> una petición clara le da a la otra persona una oportunidad real de responder, en lugar de evaluarla frente a una expectativa que quizá no sabe que existe."></div>
+<button class="primary" onclick="go('phraseReady')" data-en="Use this" data-es="Usar esta frase"></button>
+</section>
+<section id="feedbackYes" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="FOR NOW, THAT'S ENOUGH" data-es="POR AHORA, ES SUFICIENTE"></div>
+<h2 data-en="You didn't have to solve the relationship. You only had to avoid making this moment worse." data-es="No tenías que resolver la relación. Solo necesitabas evitar que este momento empeorara."></h2>
+<p data-en="If you interrupted the escalation, paused an impulse, or avoided saying something you might regret, this tool did its job for this moment." data-es="Si interrumpiste la escalada, frenaste un impulso o evitaste decir algo de lo que podrías arrepentirte, esta herramienta cumplió su función en este momento."></p>
+<button class="primary" onclick="go('home')" data-en="Return to the start" data-es="Volver al inicio"></button>
+<button onclick="go('professionalHelpInfo')" data-en="When might professional help make sense?" data-es="¿Cuándo podría ser buena idea buscar ayuda profesional?"></button>
+</section>
+
+<section id="feedbackSome" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="IT HELPED A LITTLE" data-es="AYUDÓ UN POCO"></div>
+<h2 data-en="You don't have to force a solution because the intensity came down a little." data-es="No tienes que forzar una solución solo porque la intensidad bajó un poco."></h2>
+<p data-en="Choose whether you need one more immediate step or whether it's better to stop here for now." data-es="Elige si necesitas un paso inmediato más o si es mejor dejarlo aquí por ahora."></p>
+<button class="primary" onclick="restartAt('right')" data-en="I still need help calming down" data-es="Todavía necesito ayuda para calmarme"></button>
+<button onclick="restartAt('after')" data-en="The fight ended — help me avoid making the aftermath worse" data-es="La pelea terminó — ayúdame a no empeorar lo que viene después"></button>
+<button onclick="go('professionalHelpInfo')" data-en="This keeps happening — when should we seek professional help?" data-es="Esto se repite — ¿cuándo convendría buscar ayuda profesional?"></button>
+<button onclick="go('home')" data-en="Stop here and return to the start" data-es="Dejarlo aquí y volver al inicio"></button>
+</section>
+
+<section id="feedbackWorse" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="THIS APPROACH DIDN'T HELP" data-es="ESTE ENFOQUE NO AYUDÓ"></div>
+<h2 data-en="Don't keep pushing the same conversation if it's making the conflict worse." data-es="No sigas empujando la misma conversación si está empeorando el conflicto."></h2>
+<p data-en="First separate escalation from safety. If there is fear, threats, physical aggression, coercion, or immediate danger, this is no longer just a communication problem." data-es="Primero separa la escalada de la seguridad. Si hay miedo, amenazas, agresión física, coerción o peligro inmediato, esto ya no es solo un problema de comunicación."></p>
+<button onclick="go('danger')" data-en="I feel unsafe, threatened, or afraid" data-es="Me siento en peligro, bajo amenaza o con miedo"></button>
+<button class="primary" onclick="go('escalationClosure')" data-en="No — we're safe, but still escalating" data-es="No — estamos seguros, pero seguimos escalando"></button>
+<button onclick="go('professionalHelpInfo')" data-en="This pattern keeps repeating" data-es="Este patrón se repite constantemente"></button>
+<button onclick="go('home')" data-en="Stop here and return to the start" data-es="Dejarlo aquí y volver al inicio"></button>
+</section>
+<section id="danger" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Prioritize your safety." data-es="Prioriza tu seguridad."></h2>
+<p data-en="This tool is for conflict de-escalation, not violence, threats or coercion. Move to a safer place if you can and seek help from a trusted person or local emergency/support services when needed." data-es="Esta herramienta es para reducir la escalada de conflictos, no para situaciones de violencia, amenazas o coerción. Si puedes, dirígete a un lugar más seguro y busca ayuda de una persona de confianza o de los servicios locales de emergencia o apoyo cuando sea necesario."></p>
+<button class="primary" onclick="go('home')" data-en="Leave this flow" data-es="Salir de este recorrido"></button>
+</section>
+<section id="theyListened" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="THE CONVERSATION IS OPEN" data-es="LA CONVERSACIÓN ESTÁ ABIERTA"></div>
+<h2 data-en="Good. Now don't rush to prove your point." data-es="Bien. Ahora no te apresures a demostrar tu punto."></h2>
+<p data-en="If they listened, the next useful step is to understand what they heard and make room for their side." data-es="Si te escuchó, el siguiente paso útil es comprobar qué entendió y dejar espacio para su perspectiva."></p>
+<div class="script" data-en="“Before we keep going, I want to make sure I explained myself well. What did you understand from what I just told you?”" data-es="“Antes de seguir, quiero asegurarme de haberme explicado bien. ¿Qué entendiste de lo que acabo de decirte?”"></div>
+<div class="why" data-en="<b>Because</b> being heard is not always the same as being understood; checking understanding can catch a misunderstanding before it becomes the next argument." data-es="<b>Porque</b> que te hayan escuchado no siempre significa que te hayan entendido; comprobarlo puede detectar un malentendido antes de que se convierta en la siguiente discusión."></div>
+<button class="primary" onclick="go('heardAccurately')" data-en="They understood what I meant" data-es="Entendió lo que quise decir"></button>
+<button onclick="go('heardWrong')" data-en="They understood something different" data-es="Entendió algo diferente"></button>
+<button onclick="go('heardTheirSide')" data-en="They want to tell me their side" data-es="Quiere contarme su perspectiva"></button>
+</section>
+
+<section id="heardAccurately" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Now move from understanding to what happens next." data-es="Ahora pasa de entenderse a decidir qué sigue."></h2>
+<div class="script" data-en="“Yes, that's what I was trying to say. What could we do differently next time?”" data-es="“Sí, eso es lo que intentaba decir. ¿Qué podríamos hacer diferente la próxima vez?”"></div>
+<div class="why" data-en="<b>Because</b> a conversation can feel productive without producing a clear next step. A small agreement makes the change more concrete." data-es="<b>Porque</b> una conversación puede sentirse productiva sin producir un siguiente paso claro. Un acuerdo pequeño vuelve el cambio más concreto."></div>
+<button class="primary" onclick="go('agreement')" data-en="We reached an agreement" data-es="Llegamos a un acuerdo"></button>
+<button onclick="go('noAgreement')" data-en="We understand each other, but we don't agree" data-es="Nos entendemos, pero no estamos de acuerdo"></button>
+</section>
+
+<section id="heardWrong" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Correct the meaning, not the person." data-es="Aclara el mensaje, no corrijas a la persona."></h2>
+<div class="script" data-en="“I can see why it sounded that way. That's not quite what I meant. What I'm trying to say is ___.”" data-es="“Entiendo por qué pudo sonar así. No es exactamente lo que quise decir. Lo que intento decir es ___.”"></div>
+<div class="why" data-en="<b>Because</b> “you misunderstood me” can sound like blame, while clarifying your own message keeps responsibility on what you can control." data-es="<b>Porque</b> decir “me entendiste mal” puede sonar a reproche, mientras que aclarar tu propio mensaje mantiene el foco en lo que tú puedes controlar."></div>
+<button class="primary" onclick="go('heardClarificationResult')" data-en="Check again" data-es="Comprobar otra vez"></button>
+</section>
+
+<section id="heardTheirSide" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Your next job is to understand before answering." data-es="Tu siguiente tarea es entender antes de responder."></h2>
+<div class="script" data-en="“Okay. Tell me how you experienced it. I'll try to understand before I respond.”" data-es="“Está bien. Cuéntame cómo lo viviste tú. Voy a intentar entenderte antes de responder.”"></div>
+<div class="why" data-en="<b>Because</b> preparing your rebuttal while the other person speaks can make you miss the information that could change the conversation." data-es="<b>Porque</b> preparar tu contraargumento mientras la otra persona habla puede hacer que pierdas información capaz de cambiar la conversación."></div>
+<button class="primary" onclick="go('theirSideResult')" data-en="I heard their side" data-es="Ya escuché su perspectiva"></button>
+</section>
+
+<section id="theirSideResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened when you listened?" data-es="¿Qué pasó cuando escuchaste su perspectiva?"></h2>
+<button onclick="go('understandBetter')" data-en="I understand them better now" data-es="Ahora entiendo mejor su perspectiva"></button>
+<button onclick="go('noAgreement')" data-en="I understand, but I still disagree" data-es="Entiendo, pero sigo sin estar de acuerdo"></button>
+<button onclick="restartAt('escalationReset')" data-en="I got activated again" data-es="Volví a alterarme"></button>
+</section>
+
+<section id="agreement" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="MAKE IT SMALL AND CLEAR" data-es="HAZLO PEQUEÑO Y CLARO"></div>
+<h2 data-en="Don't solve the whole relationship. Define the next behavior." data-es="No intenten resolver toda la relación. Definan la próxima conducta."></h2>
+<div class="script" data-en="“So next time, let's try ___. Does that feel realistic for both of us?”" data-es="“Entonces, la próxima vez intentemos ___. ¿Te parece algo realista para los dos?”"></div>
+<div class="why" data-en="<b>Because</b> a specific agreement is easier to remember and test than a broad promise like “we'll communicate better.”" data-es="<b>Porque</b> un acuerdo específico es más fácil de recordar y poner a prueba que una promesa amplia como “vamos a comunicarnos mejor”."></div>
+<button class="primary" onclick="go('conversationComplete')" data-en="Finish this conversation for now" data-es="Cerrar esta conversación por ahora"></button>
+</section>
+
+<section id="noAgreement" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="UNDERSTANDING IS NOT AGREEMENT" data-es="ENTENDER NO ES ESTAR DE ACUERDO"></div>
+<h2 data-en="You can understand each other and still disagree." data-es="Pueden entenderse y aun así no estar de acuerdo."></h2>
+<div class="script" data-en="“I think I understand your position, even though I don't see it the same way. We don't have to force an agreement right now.”" data-es="“Creo que entiendo tu posición, aunque yo no lo vea de la misma manera. No tenemos que forzar un acuerdo ahora mismo.”"></div>
+<div class="why" data-en="<b>Because</b> forcing agreement can restart the fight when the useful outcome may simply be clearer understanding." data-es="<b>Porque</b> forzar un acuerdo puede reiniciar la pelea cuando el resultado útil quizá sea simplemente entenderse con mayor claridad."></div>
+<button class="primary" onclick="go('conversationComplete')" data-en="Stop here for now" data-es="Dejarlo aquí por ahora"></button>
+</section>
+<section id="chase" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="DON'T CHASE THE CONVERSATION" data-es="NO PERSIGAS LA CONVERSACIÓN"></div>
+<h2 data-en="If your partner is walking away, don't follow them yet." data-es="Si tu pareja se está alejando, no vayas detrás todavía."></h2>
+<p data-en="Being left in the middle of a conflict can feel frustrating or rejecting. But following someone from room to room can turn the need to talk into pressure." data-es="Que la otra persona se aleje en medio de un conflicto puede sentirse frustrante o como rechazo. Pero seguirla de un espacio a otro puede convertir la necesidad de hablar en presión."></p>
+<div class="why" data-en="<b>Because</b> giving a few minutes of physical space can make a later conversation more possible than trying to force it now." data-es="<b>Porque</b> darle unos minutos de espacio físico puede hacer más posible una conversación después que intentar forzarla ahora."></div>
+<button class="primary" onclick="go('chasePause')" data-en="I'll give them space for now" data-es="Voy a darle espacio por ahora"></button>
+<button onclick="go('chaseUrge')" data-en="I still feel like I need to follow them" data-es="Sigo sintiendo que necesito ir detrás"></button>
+</section>
+
+<section id="chasePause" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Space doesn't have to mean abandonment." data-es="Dar espacio no significa abandonar el problema."></h2>
+<div class="script" data-en="“I can see you don't want to keep talking right now. I'm going to give you space. When we're calmer, I'd like us to come back to this.”" data-es="“Veo que no quieres seguir hablando ahora. Voy a darte espacio. Cuando estemos más tranquilos, me gustaría que retomemos esto.”"></div>
+<div class="why" data-en="<b>Because</b> you can respect their distance while still making it clear that the issue matters to you." data-es="<b>Porque</b> puedes respetar su distancia y, al mismo tiempo, dejar claro que el tema sigue siendo importante para ti."></div>
+<button class="primary" onclick="go('chaseFeedback')" data-en="Give them space" data-es="Darle espacio"></button>
+</section>
+
+<section id="chaseUrge" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What makes it feel urgent to follow them?" data-es="¿Qué hace que sientas tanta urgencia por ir detrás?"></h2>
+<button onclick="go('chaseRejected')" data-en="I feel rejected when they walk away" data-es="Siento rechazo cuando se aleja"></button>
+<button onclick="go('chaseUnfinished')" data-en="I can't stand leaving the conversation unfinished" data-es="No soporto dejar la conversación inconclusa"></button>
+<button onclick="go('chaseMisread')" data-en="I'm afraid their silence means something worse" data-es="Temo que su silencio signifique algo peor"></button>
+</section>
+
+<section id="chaseRejected" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Distance in this moment is not proof of rejection." data-es="Que se aleje en este momento no demuestra que te esté rechazando."></h2>
+<p data-en="You know that they moved away. You don't yet know everything that movement means." data-es="Sabes que se alejó. Todavía no sabes todo lo que ese gesto significa."></p>
+<div class="why" data-en="<b>Because</b> when information is missing, it's easy to fill the gap with the explanation we fear most." data-es="<b>Porque</b> cuando falta información, es fácil llenar ese vacío con la explicación que más tememos."></div>
+<button class="primary" onclick="go('chasePause')" data-en="Give space without assuming" data-es="Dar espacio sin asumir"></button>
+</section>
+
+<section id="chaseUnfinished" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="An unfinished conversation can be safer than a forced one." data-es="Una conversación inconclusa puede ser mejor que una conversación forzada."></h2>
+<p data-en="You don't have to resolve the discomfort immediately. The conversation can remain open and be resumed later." data-es="No tienes que resolver la incomodidad inmediatamente. La conversación puede quedar abierta y retomarse después."></p>
+<button class="primary" onclick="go('chasePause')" data-en="Leave it open for now" data-es="Dejarla abierta por ahora"></button>
+</section>
+
+<section id="chaseMisread" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Don't make their silence answer a question they haven't answered." data-es="No hagas que su silencio responda una pregunta que todavía no ha respondido."></h2>
+<p data-en="Their silence may communicate discomfort, but it doesn't tell you exactly what they're thinking or what will happen next." data-es="Su silencio puede comunicar incomodidad, pero no te dice exactamente qué está pensando ni qué va a pasar después."></p>
+<button class="primary" onclick="go('chasePause')" data-en="Stop guessing for now" data-es="Dejar de adivinar por ahora"></button>
+</section>
+
+<section id="apologyFrustration" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="TWO DIFFERENT THINGS" data-es="SON DOS COSAS DISTINTAS"></div>
+<h2 data-en="Your apology and the apology you want from them don't have to happen at the same time." data-es="Tu disculpa y la disculpa que esperas de tu pareja no tienen que ocurrir al mismo tiempo."></h2>
+<p data-en="You can take responsibility for your part without declaring that they did nothing wrong." data-es="Puedes asumir tu parte sin afirmar que la otra persona no hizo nada mal."></p>
+<div class="why" data-en="<b>Because</b> making your apology depend on theirs can turn repair into an exchange: “I'll own my part if you own yours.”" data-es="<b>Porque</b> hacer que tu disculpa dependa de la suya puede convertir la reparación en un intercambio: “yo asumo mi parte si tú asumes la tuya”."></div>
+<button class="primary" onclick="go('apologyFrustrationScript')" data-en="Help me apologize without erasing my side" data-es="Ayúdame a disculparme sin borrar mi parte"></button>
+<button onclick="go('neverApologizes')" data-en="What hurts most is that they never apologize" data-es="Lo que más me duele es que nunca se disculpa"></button>
+</section>
+
+<section id="apologyFrustrationScript" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Keep the two conversations separate." data-es="Separa las dos conversaciones."></h2>
+<div class="script" data-en="“I want to apologize for my part without using what you did to cancel it. What I said/did was wrong, and I'm sorry. There is something that hurt me too, and I'd like us to talk about that separately when we can.”" data-es="“Quiero disculparme por mi parte sin usar lo que tú hiciste para anularla. Lo que dije/hice estuvo mal y lo siento. Hay algo que también me lastimó, y me gustaría que podamos hablar de eso por separado cuando podamos.”"></div>
+<button class="primary" onclick="go('regretNext')" data-en="I apologized" data-es="Ya me disculpé"></button>
+<button onclick="go('notReady')" data-en="I'm not ready to say it yet" data-es="Todavía no estoy listo/a para decirlo"></button>
+</section>
+
+<section id="apologyWithoutReturn" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="APOLOGIZE FOR YOUR PART" data-es="DISCÚLPATE POR TU PARTE"></div>
+<h2 data-en="You can apologize without controlling what happens next." data-es="Puedes pedir perdón sin controlar lo que ocurra después."></h2>
+<p data-en="A sincere apology is about what you choose to own. It doesn't guarantee forgiveness, agreement, or an apology in return." data-es="Una disculpa sincera se refiere a aquello de lo que tú decides hacerte responsable. No garantiza perdón, acuerdo ni una disculpa de vuelta."></p>
+<div class="why" data-en="<b>Because</b> separating your responsibility from their response lets the apology stand on its own." data-es="<b>Porque</b> separar tu responsabilidad de la respuesta de la otra persona permite que la disculpa se sostenga por sí misma."></div>
+<button class="primary" onclick="go('apologyWithoutReturnScript')" data-en="Help me say it" data-es="Ayúdame a decirlo"></button>
+</section>
+
+<section id="apologyWithoutReturnScript" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="script" data-en="“I want to apologize for what I said/did. I don't want to make this apology depend on what you say back. I can see my part, and I'm sorry for it.”" data-es="“Quiero pedirte perdón por lo que dije/hice. No quiero que esta disculpa dependa de lo que tú respondas. Puedo reconocer mi parte y lo siento.”"></div>
+<p class="muted" data-en="After saying it, let their response belong to them." data-es="Después de decirlo, deja que su respuesta le pertenezca a la otra persona."></p>
+<button class="primary" onclick="go('regretNext')" data-en="I said it" data-es="Ya lo dije"></button>
+</section>
+
+
+<section id="silentNow" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="THE SILENCE AFTER THE FIGHT" data-es="EL SILENCIO DESPUÉS DE LA PELEA"></div>
+<h2 data-en="Don't force the silence to mean only one thing." data-es="No obligues al silencio a significar una sola cosa."></h2>
+<p data-en="You may both be calming down, hurt, waiting, or unsure how to restart. You don't have to guess." data-es="Ambos pueden estar calmándose, dolidos, esperando o sin saber cómo retomar. No tienes que adivinarlo."></p>
+<div class="why" data-en="<b>Because</b> silence signals distance, but it doesn't tell you exactly what the other person is thinking." data-es="<b>Porque</b> el silencio señala distancia, pero no te dice exactamente qué está pensando la otra persona."></div>
+<button class="primary" onclick="go('beforeWords')" data-en="I want to reopen the conversation" data-es="Quiero retomar la conversación"></button>
+<button onclick="go('wontTalkSpace')" data-en="I prefer to give it more time" data-es="Prefiero darle más tiempo"></button>
+</section>
+
+<section id="distantNow" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Distance after a fight doesn't have to be solved immediately." data-es="La distancia después de una pelea no tiene que resolverse inmediatamente."></h2>
+<p data-en="If things are calmer but your partner is still distant, avoid demanding reassurance right away." data-es="Si las cosas están más tranquilas pero tu pareja sigue distante, evita exigir tranquilidad o cercanía de inmediato."></p>
+<div class="script" data-en="“I can see you may still need some space. I won't push you. When you're ready, I'd like us to talk.”" data-es="“Veo que quizá todavía necesitas espacio. No voy a presionarte. Cuando estés listo/a, me gustaría que podamos hablar.”"></div>
+<div class="why" data-en="<b>Because</b> calm and closeness don't always return at the same speed." data-es="<b>Porque</b> la calma y la cercanía no siempre regresan a la misma velocidad."></div>
+<button class="primary" onclick="go('distantAfterSpace')" data-en="Tell me what happened after giving space" data-es="Contarme qué pasó después de darle espacio"></button>
+</section>
+
+<section id="spaceAsked" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="If they asked for space, make the space clear." data-es="Si te pidió espacio, haz que ese espacio sea claro."></h2>
+<div class="script" data-en="“Okay. I'll give you space. I don't want to chase the conversation. When you're ready, we can decide when to talk.”" data-es="“Está bien. Voy a darte espacio. No quiero perseguir la conversación. Cuando estés listo/a, podemos decidir cuándo hablar.”"></div>
+<div class="why" data-en="<b>Because</b> respecting a request for space is different from pretending the issue never happened." data-es="<b>Porque</b> respetar una petición de espacio es diferente de fingir que el problema nunca ocurrió."></div>
+<button class="primary" onclick="go('wontTalkNext')" data-en="Tell me what happened after giving space" data-es="Contarme qué pasó después de darle espacio"></button>
+</section>
+
+<section id="feelingsCheck" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Name the feeling before you decide what to do with it." data-es="Ponle nombre a lo que sientes antes de decidir qué hacer con ello."></h2>
+<p data-en="Which is closest right now?" data-es="¿Qué se acerca más a lo que sientes ahora?"></p>
+<button onclick="go('dontTalkHurt')" data-en="I'm hurt" data-es="Estoy herido/a"></button>
+<button onclick="restartAt('right')" data-en="I'm still angry or activated" data-es="Sigo enojado/a o alterado/a"></button>
+<button onclick="go('chaseRejected')" data-en="I feel rejected or abandoned" data-es="Me siento rechazado/a o abandonado/a"></button>
+<button onclick="go('beforeWords')" data-en="I'm confused and need to organize what I want to say" data-es="Estoy confundido/a y necesito ordenar lo que quiero decir"></button>
+</section>
+
+<section id="neverAcknowledge" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Focus first on acknowledgment, not the word “sorry.”" data-es="Primero enfócate en el reconocimiento, no en la palabra “perdón”."></h2>
+<div class="script" data-en="“What I need first is to know that you understand what hurt me. I'm not asking you to agree with every part of my version.”" data-es="“Lo que necesito primero es saber que entiendes qué me lastimó. No te estoy pidiendo que estés de acuerdo con cada parte de mi versión.”"></div>
+<div class="why" data-en="<b>Because</b> sometimes the unmet need is recognition of the impact, not a particular apology formula." data-es="<b>Porque</b> a veces la necesidad insatisfecha es que se reconozca el impacto, no escuchar una fórmula específica de disculpa."></div>
+<button class="primary" onclick="restartAt('before')" data-en="Prepare this conversation" data-es="Preparar esta conversación"></button>
+</section>
+
+<section id="unequalApology" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Your accountability doesn't have to erase shared responsibility." data-es="Hacerte responsable no tiene que borrar la responsabilidad compartida."></h2>
+<div class="script" data-en="“I can apologize for my part without saying the whole conflict was mine. I'd also like us to talk about your part when we're ready.”" data-es="“Puedo disculparme por mi parte sin decir que todo el conflicto fue responsabilidad mía. También me gustaría que hablemos de tu parte cuando estemos listos.”"></div>
+<div class="why" data-en="<b>Because</b> apologizing for your behavior and assigning responsibility for the whole conflict are two different things." data-es="<b>Porque</b> disculparte por tu conducta y asumir la responsabilidad de todo el conflicto son dos cosas diferentes."></div>
+<button class="primary" onclick="go('apologyFrustrationScript')" data-en="Help me apologize for my part" data-es="Ayúdame a disculparme por mi parte"></button>
+</section>
+
+<section id="actsNormal" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Acting normal doesn't necessarily mean the issue feels resolved to you." data-es="Actuar como si nada hubiera pasado no significa necesariamente que para ti el problema esté resuelto."></h2>
+<div class="script" data-en="“I know we're acting normally again, but I don't want to skip over what happened. I'd like us to talk about it when we can do it calmly.”" data-es="“Sé que estamos actuando con normalidad otra vez, pero no quiero pasar por alto lo que ocurrió. Me gustaría que hablemos de ello cuando podamos hacerlo con calma.”"></div>
+<div class="why" data-en="<b>Because</b> returning to routine can reduce tension without resolving the meaning of the conflict." data-es="<b>Porque</b> volver a la rutina puede reducir la tensión sin resolver lo que significó el conflicto."></div>
+<button class="primary" onclick="restartAt('before')" data-en="Prepare that conversation" data-es="Preparar esa conversación"></button>
+</section>
+
+<section id="waitingApology" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Waiting silently can turn the apology into another mind-reading test." data-es="Esperar en silencio puede convertir la disculpa en otra prueba de lectura de mente."></h2>
+<p data-en="You can want an apology and still say clearly what you need." data-es="Puedes querer una disculpa y aun así expresar con claridad lo que necesitas."></p>
+<div class="script" data-en="“I'm still affected by what happened. It would matter to me to hear you acknowledge your part in it.”" data-es="“Lo que pasó todavía me afecta. Para mí sería importante que pudieras reconocer tu parte en lo ocurrido.”"></div>
+<div class="why" data-en="<b>Because</b> asking doesn't guarantee an apology, but it removes the need for the other person to guess what you're waiting for." data-es="<b>Porque</b> pedirlo no garantiza una disculpa, pero evita que la otra persona tenga que adivinar qué estás esperando."></div>
+<button class="primary" onclick="restartAt('before')" data-en="Prepare how to say it" data-es="Preparar cómo decirlo"></button>
+</section>
+
+<section id="repairFatigue" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You don't have to repair everything alone." data-es="No tienes que reparar todo tú solo/a."></h2>
+<p data-en="If you're repeatedly the only person reopening conversations, apologizing, or proposing solutions, the issue may be the pattern itself." data-es="Si repetidamente eres la única persona que retoma las conversaciones, se disculpa o propone soluciones, quizá el problema sea el patrón en sí mismo."></p>
+<div class="script" data-en="“I want us to repair things after conflict, but I don't want that responsibility to fall on only one of us. I need us both to participate.”" data-es="“Quiero que podamos reparar las cosas después de un conflicto, pero no quiero que esa responsabilidad recaiga solo en uno de nosotros. Necesito que ambos participemos.”"></div>
+<div class="why" data-en="<b>Because</b> a relationship repair process can't become a permanent one-person job." data-es="<b>Porque</b> reparar la relación no puede convertirse permanentemente en el trabajo de una sola persona."></div>
+<button class="primary" onclick="go('beforeBoundary')" data-en="Help me set that boundary" data-es="Ayúdame a plantear ese límite"></button>
+</section>
+
+<section id="apologyDidntHelp" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="YOU APOLOGIZED — AND IT DIDN'T FIX IT" data-es="TE DISCULPASTE — Y NO LO ARREGLÓ"></div>
+<h2 data-en="An apology can be sincere without immediately repairing the impact." data-es="Una disculpa puede ser sincera sin reparar inmediatamente el impacto."></h2>
+<p data-en="The other person may still be hurt, may need time, or may need something more specific than the apology you gave." data-es="La otra persona puede seguir herida, necesitar tiempo o necesitar algo más específico que la disculpa que ofreciste."></p>
+<div class="why" data-en="<b>Because</b> apologizing is something you can offer; how quickly the other person feels better is not something you can control." data-es="<b>Porque</b> disculparte es algo que puedes ofrecer; la rapidez con la que la otra persona se sienta mejor no es algo que puedas controlar."></div>
+<button class="primary" onclick="go('apologyDidntHelpNext')" data-en="Tell me what happened after the apology" data-es="Te cuento qué pasó después de la disculpa"></button>
+</section>
+
+<section id="apologyDidntHelpNext" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened after you apologized?" data-es="¿Qué pasó después de que te disculpaste?"></h2>
+<button onclick="go('stillUpset')" data-en="They're still upset" data-es="Sigue molesto/a"></button>
+<button onclick="go('wontTalk')" data-en="They don't want to talk" data-es="No quiere hablar"></button>
+<button onclick="go('apologyMissedImpact')" data-en="They say I still don't understand what hurt them" data-es="Dice que todavía no entiendo qué le lastimó"></button>
+<button onclick="go('fightAgain')" data-en="The argument started again" data-es="La discusión empezó otra vez"></button>
+</section>
+
+<section id="talkingAgain" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="They're talking again. First find out what kind of conversation this is becoming." data-es="Volvió a hablar contigo. Primero observa en qué tipo de conversación se está convirtiendo."></h2>
+<button onclick="go('theyListened')" data-en="They're listening to what I'm saying" data-es="Está escuchando lo que estoy diciendo"></button>
+<button onclick="go('heardTheirSide')" data-en="They want to explain their side" data-es="Quiere explicar su perspectiva"></button>
+<button onclick="go('partnerDefensive')" data-en="They're responding defensively" data-es="Está respondiendo a la defensiva"></button>
+<button onclick="restartAt('right')" data-en="We're starting to escalate again" data-es="Estamos empezando a escalar otra vez"></button>
+</section>
+
+<section id="phraseReady" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Use it when you're ready. Then come back to what actually happened." data-es="Úsala cuando estés listo/a. Después vuelve y cuéntame qué ocurrió realmente."></h2>
+<button class="primary" onclick="go('conversationReaction')" data-en="I said it" data-es="Ya lo dije"></button>
+<button onclick="go('beforeReady')" data-en="I'm not ready to say it yet" data-es="Todavía no estoy listo/a para decirlo"></button>
+</section>
+
+<section id="approachReady" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Try the approach first. Don't predict the response." data-es="Prueba primero el enfoque. No predigas la respuesta."></h2>
+<button class="primary" onclick="go('conversationReaction')" data-en="I tried it" data-es="Ya lo intenté"></button>
+<button onclick="go('beforeReady')" data-en="I need to prepare more first" data-es="Primero necesito prepararme un poco más"></button>
+</section>
+
+<section id="understandBetter" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="UNDERSTANDING IS PROGRESS — NOT AGREEMENT" data-es="ENTENDER ES UN AVANCE — NO UN ACUERDO"></div>
+<h2 data-en="Understanding their perspective doesn't require you to agree with it." data-es="Entender su perspectiva no exige que estés de acuerdo con ella."></h2>
+<p data-en="Now decide whether this new understanding actually creates common ground." data-es="Ahora decide si esta nueva comprensión realmente creó un punto en común."></p>
+<button onclick="go('agreement')" data-en="Yes — we found something we can agree to do differently" data-es="Sí — encontramos algo que podemos acordar hacer diferente"></button>
+<button onclick="go('noAgreement')" data-en="No — I understand better, but we still disagree" data-es="No — entiendo mejor, pero seguimos sin estar de acuerdo"></button>
+<button onclick="go('understandMoreResult')" data-en="I need to understand more before responding" data-es="Necesito entender más antes de responder"></button>
+</section>
+
+<div class="footer" data-en="Prototype only · Not therapy or emergency support." data-es="Solo prototipo · No sustituye terapia ni asistencia de emergencia."></div>
+
+<section id="chaseFeedback" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="AFTER GIVING SPACE" data-es="DESPUÉS DE DARLE ESPACIO"></div>
+<h2 data-en="What changed after you stopped following the conversation?" data-es="¿Qué cambió después de que dejaste de perseguir la conversación?"></h2>
+<button onclick="go('chaseSpaceHelped')" data-en="The tension came down" data-es="Bajó la tensión"></button>
+<button onclick="go('chaseUrgePersistent')" data-en="I still feel a strong urge to go after them" data-es="Todavía siento mucha urgencia de ir detrás"></button>
+<button onclick="go('wontTalkNext')" data-en="They still haven't come back to talk" data-es="Todavía no ha vuelto a hablar"></button>
+<button onclick="restartAt('escalationReset')" data-en="The argument started again" data-es="La discusión empezó otra vez"></button>
+</section>
+
+<section id="chaseSpaceHelped" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Good. Don't use the calmer moment to immediately chase resolution." data-es="Bien. No uses este momento de mayor calma para perseguir inmediatamente una solución."></h2>
+<div class="why" data-en="<b>Because</b> lower tension is progress even if the original issue is still unresolved." data-es="<b>Porque</b> que haya bajado la tensión ya es un avance, aunque el problema original siga sin resolverse."></div>
+<button class="primary" onclick="go('resumeLaterPrep')" data-en="Help me prepare how to resume later" data-es="Ayúdame a preparar cómo retomarlo después"></button>
+<button onclick="go('home')" data-en="Leave it here for now" data-es="Dejarlo aquí por ahora"></button>
+</section>
+
+<section id="partnerDefensive" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="THEY'RE GETTING DEFENSIVE" data-es="SE ESTÁ PONIENDO A LA DEFENSIVA"></div>
+<h2 data-en="Don't answer the defense with a stronger accusation." data-es="No respondas a la defensiva con una acusación más fuerte."></h2>
+<div class="script" data-en="“I'm not trying to prove that you're a bad person or tell you what your intention was. I'm trying to explain how this affected me.”" data-es="“No intento demostrar que seas una mala persona ni decirte cuál fue tu intención. Estoy intentando explicarte cómo me afectó esto.”"></div>
+<div class="why" data-en="<b>Because</b> once the conversation becomes a defense of character or intention, the original issue can disappear." data-es="<b>Porque</b> cuando la conversación se convierte en defender el carácter o la intención, el problema original puede desaparecer del diálogo."></div>
+<button class="primary" onclick="go('partnerDefensiveResult')" data-en="I tried that" data-es="Ya lo intenté"></button>
+</section>
+
+<section id="partnerDefensiveResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened?" data-es="¿Qué pasó?"></h2>
+<button onclick="go('theyListened')" data-en="They became more open to listening" data-es="Se mostró más dispuesto/a a escuchar"></button>
+<button onclick="go('heardTheirSide')" data-en="They started explaining their side" data-es="Empezó a explicar su perspectiva"></button>
+<button onclick="restartAt('escalationReset')" data-en="The conversation kept escalating" data-es="La conversación siguió escalando"></button>
+<button onclick="go('defensiveStoppedTalk')" data-en="They stopped wanting to talk" data-es="Dejó de querer hablar"></button>
+</section>
+
+<section id="apologyMissedImpact" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Before apologizing again, understand what they believe you still haven't understood." data-es="Antes de volver a disculparte, entiende qué siente que todavía no has comprendido."></h2>
+<div class="script" data-en="“I don't want to repeat the apology without understanding you better. What part of what happened do you feel I still haven't understood?”" data-es="“No quiero repetir la disculpa sin entenderte mejor. ¿Qué parte de lo que pasó sientes que todavía no he comprendido?”"></div>
+<div class="why" data-en="<b>Because</b> repeating “sorry” may not repair anything if the other person is still trying to communicate the impact." data-es="<b>Porque</b> repetir “perdón” puede no reparar nada si la otra persona todavía está intentando comunicarte el impacto."></div>
+<button class="primary" onclick="go('apologySecondListenResult')" data-en="Listen to their answer first" data-es="Escuchar primero su respuesta"></button>
+</section>
+
+<section id="conversationComplete" class="screen">
+<div class="kicker" data-en="YOU CAN STOP HERE" data-es="PUEDEN DEJARLO AQUÍ"></div>
+<h2 data-en="The goal wasn't to win. It was to leave the conversation in a better place." data-es="El objetivo no era ganar. Era dejar la conversación en un lugar mejor."></h2>
+<p data-en="If you reached an agreement, keep it small and concrete. If you only reached clearer understanding, that can also be enough for now." data-es="Si llegaron a un acuerdo, manténganlo pequeño y concreto. Si solo lograron entenderse con mayor claridad, eso también puede ser suficiente por ahora."></p>
+<button class="primary" onclick="go('home')" data-en="Finish for now" data-es="Terminar por ahora"></button>
+<button onclick="go('resumeLaterPrep')" data-en="There's another issue I want to prepare for" data-es="Hay otro tema que quiero preparar"></button>
+</section>
+
+
+<section id="criticismSeparate" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="FIRST: THE REQUEST" data-es="PRIMERO: LA PETICIÓN"></div>
+<h2 data-en="If you remove the tone, gestures and accusations, what is your partner actually asking you to do or change?" data-es="Si quitas el tono, los gestos y los reproches, ¿qué te está pidiendo realmente tu pareja que hagas o cambies?"></h2>
+<p data-en="Don't decide yet whether they're right. Just identify the concrete request underneath the way it was delivered." data-es="No decidas todavía si tiene razón. Identifica solamente la petición concreta que hay debajo de la forma en que te lo dijo."></p>
+<button class="primary" onclick="go('criticismDelivery')" data-en="I can identify the request" data-es="Ya puedo identificar la petición"></button>
+<button onclick="go('criticismNoRequest')" data-en="I can't find a concrete request" data-es="No encuentro una petición concreta"></button>
+</section>
+
+<section id="criticismDelivery" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="NOW: THE DELIVERY" data-es="AHORA: LA FORMA"></div>
+<h2 data-en="Now separate what hurt or activated you about how it was said." data-es="Ahora separa qué te dolió o te activó de la forma en que te lo dijo."></h2>
+<p data-en="Tone, gestures, sarcasm or accusations can matter. But you don't have to solve the request and the delivery at the same time." data-es="El tono, los gestos, el sarcasmo o los reproches pueden importar. Pero no tienes que resolver la petición y la forma al mismo tiempo."></p>
+<button class="primary" onclick="go('criticismRespond')" data-en="Help me respond without mixing the two" data-es="Ayúdame a responder sin mezclar las dos cosas"></button>
+</section>
+
+<section id="criticismNoRequest" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Then don't guess what you're supposed to fix." data-es="Entonces no adivines qué se supone que debes corregir."></h2>
+<div class="script" data-en="“I want to understand you. What specifically would you like me to do differently?”" data-es="“Quiero entenderte. ¿Qué específicamente te gustaría que hiciera diferente?”"></div>
+<div class="why" data-en="<b>Because</b> a concrete request gives both of you something clearer to respond to than a general criticism." data-es="<b>Porque</b> una petición concreta les da a ambos algo más claro a lo que responder que una crítica general."></div>
+<button class="primary" onclick="go('criticismResult')" data-en="I asked for something specific" data-es="Ya pedí que me diga algo concreto"></button>
+</section>
+
+<section id="criticismRespond" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Respond to the request first without pretending the delivery didn't matter." data-es="Responde primero a la petición sin fingir que la forma no importó."></h2>
+<div class="script" data-en="“I want to understand what you're asking me to change. I can talk about that. I also want us to come back to how we're speaking to each other, because that part is making it harder for me to listen.”" data-es="“Quiero entender qué me estás pidiendo que cambie. Podemos hablar de eso. También quiero que después volvamos a cómo nos estamos hablando, porque esa parte me está haciendo más difícil escucharte.”"></div>
+<button class="primary" onclick="go('criticismAfterResponse')" data-en="I said it" data-es="Ya lo dije"></button>
+<button onclick="restartAt('escalationReset')" data-en="I'm too activated to say this now" data-es="Estoy demasiado alterado/a para decir esto ahora"></button>
+</section>
+
+<section id="criticismResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened after you tried to make the request clearer?" data-es="¿Qué pasó después de intentar aclarar la petición?"></h2>
+<button onclick="go('criticismClarified')" data-en="They explained it more clearly" data-es="Lo explicó con más claridad"></button>
+<button onclick="go('criticismDefensive')" data-en="They became defensive" data-es="Se puso a la defensiva"></button>
+<button onclick="go('criticismEscalated')" data-en="The argument started escalating again" data-es="La discusión volvió a escalar"></button>
+<button onclick="go('defensiveStoppedTalk')" data-en="They stopped wanting to talk" data-es="Dejó de querer hablar"></button>
+</section>
+
+
+<section id="criticismDefensive" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="AFTER ASKING FOR CLARITY" data-es="DESPUÉS DE PEDIR CLARIDAD"></div>
+<h2 data-en="If they became defensive when you asked for something concrete, don't turn the request for clarity into a trial." data-es="Si se puso a la defensiva cuando pediste algo concreto, no conviertas tu pedido de claridad en un juicio."></h2>
+<div class="script" data-en="“I'm not asking you to justify why you're upset. I want to understand what you need from me concretely so I can respond to that.”" data-es="“No te estoy pidiendo que justifiques por qué estás molesto/a. Quiero entender qué necesitas concretamente de mí para poder responder a eso.”"></div>
+<div class="why" data-en="<b>Because</b> asking for a concrete request is different from arguing about whether their feelings are valid." data-es="<b>Porque</b> pedir una petición concreta es diferente de discutir si lo que siente la otra persona es válido."></div>
+<button class="primary" onclick="go('criticismDefensiveResult')" data-en="I tried to clarify that" data-es="Intenté aclararlo así"></button>
+</section>
+<section id="criticismDefensiveResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened when you asked again for a concrete request?" data-es="¿Qué pasó cuando volviste a pedir una petición concreta?"></h2>
+<button onclick="go('criticismClarified')" data-en="They told me specifically what they need" data-es="Me dijo concretamente qué necesita"></button>
+<button onclick="go('criticismGeneralCriticism')" data-en="They kept criticizing me without asking for anything concrete" data-es="Siguió criticándome sin pedirme nada concreto"></button>
+<button onclick="go('criticismShouldKnow')" data-en="They said I should already know without being told" data-es="Dijo que yo debería saberlo sin que tenga que pedírmelo"></button>
+<button onclick="go('criticismEscalated')" data-en="They became even more upset" data-es="Se molestó todavía más"></button>
+<button onclick="go('criticismSilence')" data-en="They no longer wanted to talk" data-es="Ya no quiso hablar"></button>
+</section>
+<section id="criticismClarified" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="NOW YOU HAVE A REQUEST" data-es="AHORA TIENES UNA PETICIÓN"></div>
+<h2 data-en="Good. Now decide what you can respond to without mixing it with the way it was delivered." data-es="Bien. Ahora decide a qué puedes responder sin mezclarlo con la forma en que te lo dijo."></h2>
+<p data-en="Understanding the request doesn't mean agreeing with all of it. It only gives you something concrete to discuss." data-es="Entender la petición no significa estar de acuerdo con todo. Solo te da algo concreto sobre lo que conversar."></p>
+<button class="primary" onclick="go('criticismDelivery')" data-en="I also need to address how it was said" data-es="También necesito hablar de cómo me lo dijo"></button>
+<button onclick="go('criticismRequestResponse')" data-en="Help me respond to the request itself" data-es="Ayúdame a responder a la petición"></button>
+</section>
+<section id="criticismGeneralCriticism" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You don't have to defend yourself against every general criticism." data-es="No tienes que defenderte de cada crítica general."></h2>
+<div class="script" data-en="“I want to work on something concrete with you. If you can tell me what you want me to do differently, I can respond to that.”" data-es="“Quiero trabajar contigo sobre algo concreto. Si me dices qué quieres que haga diferente, puedo responder a eso.”"></div>
+<button class="primary" onclick="go('criticismSecondAttemptResult')" data-en="See what happens next" data-es="Ver qué pasa después"></button>
+</section>
+<section id="criticismShouldKnow" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="“YOU SHOULD KNOW”" data-es="“DEBERÍAS SABERLO”"></div>
+<h2 data-en="Living together doesn't mean having identical priorities or reading each other's mind." data-es="Vivir juntos no significa tener prioridades idénticas ni poder leerse la mente."></h2>
+<p data-en="Silence, gestures or frustration may communicate that something is wrong, but they don't necessarily communicate what the other person wants you to do differently." data-es="El silencio, los gestos o la frustración pueden comunicar que algo está mal, pero no necesariamente comunican qué quiere la otra persona que hagas diferente."></p>
+<div class="script" data-en="“I can see that this matters to you. But I may not notice or prioritize the same things automatically. If you tell me what you need, I can respond much better than if I have to guess.”" data-es="“Veo que esto es importante para ti. Pero puede que yo no note o priorice automáticamente las mismas cosas. Si me dices qué necesitas, puedo responder mucho mejor que si tengo que adivinarlo.”"></div>
+<button class="primary" onclick="go('criticismSecondAttemptResult')" data-en="I want to try saying that" data-es="Quiero intentar decirlo así"></button>
+</section>
+<section id="criticismEscalated" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You asked for clarity and the conversation escalated. Stop trying to extract the answer right now." data-es="Pediste claridad y la conversación escaló. Deja de intentar obtener la respuesta ahora mismo."></h2>
+<p data-en="The concrete request can wait. Your next job is to stop the new escalation." data-es="La petición concreta puede esperar. Tu siguiente tarea es detener esta nueva escalada."></p>
+<button class="primary" onclick="go('fightAgainChoice')" data-en="Help me stop this new fight" data-es="Ayúdame a detener esta nueva pelea"></button>
+</section>
+<section id="criticismSilence" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You asked for clarity and they no longer want to talk. Don't chase the answer." data-es="Pediste claridad y ya no quiere hablar. No persigas la respuesta."></h2>
+<p data-en="You can leave the request unresolved for now without pretending the original criticism disappeared." data-es="Puedes dejar la petición sin resolver por ahora sin fingir que la crítica original desapareció."></p>
+<button class="primary" onclick="go('wontTalkScript')" data-en="What can I say before giving space?" data-es="¿Qué puedo decir antes de darle espacio?"></button>
+</section>
+
+<section id="defensiveYes" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="OWN ONLY WHAT IS TRUE" data-es="RECONOCE SOLO LO QUE ES CIERTO"></div>
+<h2 data-en="Start with the small part you genuinely recognize." data-es="Empieza por la pequeña parte que realmente reconoces."></h2>
+<div class="script" data-en="“On that part, you're right. I could have handled it better.”" data-es="“En esa parte tienes razón. Podría haberlo manejado mejor.”"></div>
+<p data-en="Don't add a “but” immediately. Recognizing one part does not mean accepting the rest." data-es="No agregues un “pero” inmediatamente. Reconocer una parte no significa aceptar el resto."></p>
+<button class="primary" onclick="go('defensiveTried')" data-en="I tried saying that" data-es="Intenté decirlo así"></button>
+<button onclick="go('defensiveNotReady')" data-en="I'm too activated to say it yet" data-es="Todavía estoy demasiado alterado/a para decirlo"></button>
+</section>
+
+<section id="defensiveNo" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="DON'T FAKE AGREEMENT" data-es="NO INVENTES UN ACUERDO"></div>
+<h2 data-en="You don't have to admit something you don't believe is true just to lower the tension." data-es="No tienes que admitir algo que no consideras cierto solo para bajar la tensión."></h2>
+<div class="script" data-en="“I want to understand what you're saying, even though right now I don't see it the same way. Let me make sure I understand before I respond.”" data-es="“Quiero entender lo que me estás diciendo, aunque ahora mismo no lo vea de la misma manera. Déjame asegurarme de entender antes de responder.”"></div>
+<div class="why" data-en="<b>Because</b> listening without counterattacking is different from pretending to agree." data-es="<b>Porque</b> escuchar sin contraatacar es diferente de fingir que estás de acuerdo."></div>
+<button class="primary" onclick="go('defensiveTried')" data-en="I tried saying that" data-es="Intenté decirlo así"></button>
+<button onclick="go('defensiveNotReady')" data-en="I'm too activated to listen yet" data-es="Todavía estoy demasiado alterado/a para escuchar"></button>
+</section>
+
+<section id="defensiveTried" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="What happened after you responded that way?" data-es="¿Qué pasó después de responder de esa manera?"></h2>
+<button onclick="go('theyListened')" data-en="They became more willing to listen" data-es="Se mostró más dispuesto/a a escuchar"></button>
+<button onclick="go('heardTheirSide')" data-en="They started explaining their perspective" data-es="Empezó a explicar su perspectiva"></button>
+<button onclick="restartAt('escalationReset')" data-en="The conversation kept escalating" data-es="La conversación siguió escalando"></button>
+<button onclick="go('defensiveStoppedTalk')" data-en="They stopped wanting to talk" data-es="Dejó de querer hablar"></button>
+</section>
+
+<section id="defensiveNotReady" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Then don't force a good response while you're still preparing a bad one." data-es="Entonces no fuerces una buena respuesta mientras todavía estás preparando una mala."></h2>
+<p data-en="Your job right now is not to answer the argument. It's to lower your activation enough to choose what you say next." data-es="Tu tarea ahora no es responder al argumento. Es bajar lo suficiente tu activación para poder elegir qué decir después."></p>
+<button class="primary" onclick="restartAt('escalationReset')" data-en="Help me regulate first" data-es="Ayúdame a regularme primero"></button>
+</section>
+
+<section id="defensiveStoppedTalk" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="They stopped wanting to talk. Don't force the conversation back open." data-es="Dejó de querer hablar. No fuerces que la conversación vuelva a abrirse ahora."></h2>
+<button class="primary" onclick="go('wontTalkScript')" data-en="What can I say before giving space?" data-es="¿Qué puedo decir antes de darle espacio?"></button>
+<button onclick="go('wontTalkSpace')" data-en="I'd rather give space without saying more" data-es="Prefiero darle espacio sin decir nada más"></button>
+</section>
+
+<section id="yellAfter60" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="After 60 seconds, where are you now?" data-es="Después de 60 segundos, ¿cómo estás ahora?"></h2>
+<button onclick="go('yellReady')" data-en="I can speak without yelling" data-es="Ya puedo hablar sin gritar"></button>
+<button onclick="restartAt('escalationReset')" data-en="I'm still very activated" data-es="Sigo muy alterado/a"></button>
+<button onclick="go('fightAgain')" data-en="The argument escalated while I paused" data-es="La discusión escaló mientras intentaba pausar"></button>
+</section>
+
+<section id="yellReady" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Good. Lower intensity before trying to solve the issue." data-es="Bien. Baja la intensidad antes de intentar resolver el problema."></h2>
+<div class="script" data-en="“I want to keep talking, but not by yelling. Let me say this more calmly.”" data-es="“Quiero seguir hablando, pero no a gritos. Déjame decir esto con más calma.”"></div>
+<button class="primary" onclick="go('conversationReaction')" data-en="I tried it" data-es="Lo intenté"></button>
+</section>
+
+<section id="returnedConversation" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="THEY CAME BACK TO TALK" data-es="VOLVIÓ PARA HABLAR"></div>
+<h2 data-en="Don't use their return as proof that now you have to finish everything." data-es="No uses su regreso como señal de que ahora tienen que resolverlo todo."></h2>
+<p data-en="First find out what kind of conversation is available now." data-es="Primero identifica qué tipo de conversación es posible ahora."></p>
+<button onclick="go('theyListened')" data-en="They're willing to listen to me" data-es="Está dispuesto/a a escucharme"></button>
+<button onclick="go('heardTheirSide')" data-en="They want me to listen first" data-es="Quiere que yo escuche primero"></button>
+<button onclick="restartAt('escalationReset')" data-en="We're getting activated again" data-es="Nos estamos alterando otra vez"></button>
+<button onclick="go('wontTalkStill')" data-en="They came back but still don't want to talk about it" data-es="Volvió, pero todavía no quiere hablar del tema"></button>
+</section>
+
+<section id="criticismRequestResponse" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="RESPOND TO THE REQUEST" data-es="RESPONDE A LA PETICIÓN"></div>
+<h2 data-en="Now that the request is clear, decide what is true for you." data-es="Ahora que la petición está clara, decide qué es cierto para ti."></h2>
+<button onclick="go('criticismRequestYes')" data-en="I can agree to what they're asking" data-es="Puedo aceptar lo que me está pidiendo"></button>
+<button onclick="go('criticismRequestPartial')" data-en="I can agree to part of it, but not all" data-es="Puedo aceptar una parte, pero no todo"></button>
+<button onclick="go('criticismRequestNo')" data-en="I can't agree to that request" data-es="No puedo aceptar esa petición"></button>
+</section>
+
+<section id="criticismRequestYes" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="script" data-en="“I understand what you're asking. Yes, I can do that differently.”" data-es="“Entiendo lo que me estás pidiendo. Sí, eso puedo hacerlo diferente.”"></div>
+<button class="primary" onclick="go('conversationReaction')" data-en="I responded" data-es="Ya respondí"></button>
+</section>
+
+<section id="criticismRequestPartial" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="script" data-en="“I understand what you're asking. There is a part I can change, and another part I need us to talk about.”" data-es="“Entiendo lo que me estás pidiendo. Hay una parte que sí puedo cambiar y otra que necesito que conversemos.”"></div>
+<button class="primary" onclick="go('conversationReaction')" data-en="I responded" data-es="Ya respondí"></button>
+</section>
+
+<section id="criticismRequestNo" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="script" data-en="“I understand what you're asking, but I don't want to promise something I can't honestly agree to. I can explain what I can do instead.”" data-es="“Entiendo lo que me estás pidiendo, pero no quiero prometer algo con lo que honestamente no puedo comprometerme. Sí puedo explicarte qué puedo hacer en su lugar.”"></div>
+<button class="primary" onclick="go('conversationReaction')" data-en="I responded" data-es="Ya respondí"></button>
+</section>
+
+<section id="professionalHelpInfo" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="WHEN A PAUSE ISN'T ENOUGH" data-es="CUANDO UNA PAUSA NO ES SUFICIENTE"></div>
+<h2 data-en="Some conflicts need more than a tool for the heated moment." data-es="Algunos conflictos necesitan más que una herramienta para el momento de tensión."></h2>
+<p data-en="Don't Fight Yet is designed to help you de-escalate, slow down impulsive reactions, and avoid making a difficult moment worse. It is not therapy and it cannot diagnose or resolve deeper relationship problems." data-es="Don't Fight Yet está diseñado para ayudarte a desescalar, frenar reacciones impulsivas y evitar empeorar un momento difícil. No es terapia y no puede diagnosticar ni resolver problemas profundos de pareja."></p>
+<p data-en="Professional guidance may be worth considering when the same conflicts repeat without resolution, conversations regularly become impossible without escalating, resentment or distrust is accumulating, or the problem is seriously affecting the relationship or daily life." data-es="Puede ser buena idea considerar orientación profesional cuando los mismos conflictos se repiten sin resolverse, las conversaciones suelen volverse imposibles sin escalar, se acumula resentimiento o desconfianza, o el problema está afectando seriamente la relación o la vida cotidiana."></p>
+<div class="why" data-en="<b>Important:</b> seeking professional help doesn't mean the relationship has failed. It means the problem may need more depth, time, or guidance than this tool is designed to provide." data-es="<b>Importante:</b> buscar ayuda profesional no significa que la relación haya fracasado. Significa que el problema puede necesitar más profundidad, tiempo u orientación de la que esta herramienta está diseñada para ofrecer."></div>
+<button class="primary" onclick="go('home')" data-en="Return to the start" data-es="Volver al inicio"></button>
+<button onclick="go('professionalSafetyCheck')" data-en="What if there is fear, threats, or aggression?" data-es="¿Y si hay miedo, amenazas o agresión?"></button>
+</section>
+
+<section id="professionalSafetyCheck" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="SAFETY COMES FIRST" data-es="LA SEGURIDAD VA PRIMERO"></div>
+<h2 data-en="Fear, threats, physical aggression, coercion, or immediate danger require a different response." data-es="El miedo, las amenazas, la agresión física, la coerción o el peligro inmediato requieren una respuesta diferente."></h2>
+<p data-en="Don't use a communication script to try to manage an unsafe situation." data-es="No uses un guion de comunicación para intentar manejar una situación insegura."></p>
+<button class="primary" onclick="go('danger')" data-en="Show me the safety guidance" data-es="Ver orientación de seguridad"></button>
+<button onclick="goBack()" data-en="Back — this isn't a safety issue" data-es="Atrás — esto no es un problema de seguridad"></button>
+</section>
+
+<section id="criticismAfterResponse" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="AFTER YOU RESPONDED" data-es="DESPUÉS DE RESPONDER"></div>
+<h2 data-en="What happened after you addressed both the request and the way it was said?" data-es="¿Qué pasó después de responder a la petición y mencionar también la forma en que te lo dijo?"></h2>
+<button onclick="go('theyListened')" data-en="They listened and we could keep talking" data-es="Me escuchó y pudimos seguir hablando"></button>
+<button onclick="go('criticismFormNotDiscussed')" data-en="They addressed the request but not the way they spoke to me" data-es="Respondió sobre la petición, pero no quiso hablar de la forma"></button>
+<button onclick="go('partnerDefensive')" data-en="They became defensive about the way they spoke" data-es="Se puso a la defensiva por cómo se lo planteé"></button>
+<button onclick="restartAt('escalationReset')" data-en="The conversation escalated again" data-es="La conversación volvió a escalar"></button>
+<button onclick="go('defensiveStoppedTalk')" data-en="They stopped talking or walked away" data-es="Dejó de hablar o se retiró"></button>
+</section>
+
+<section id="criticismFormNotDiscussed" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You don't have to force both issues into the same conversation." data-es="No tienes que forzar ambos temas dentro de la misma conversación."></h2>
+<p data-en="If the request became clearer but the way you spoke to each other is still unresolved, you can leave that second issue for a calmer moment." data-es="Si la petición quedó más clara pero la forma en que se hablaron sigue pendiente, puedes dejar ese segundo tema para un momento de mayor calma."></p>
+<button class="primary" onclick="go('feedback')" data-en="Leave it here for now" data-es="Dejarlo aquí por ahora"></button>
+<button onclick="go('resumeLaterPrep')" data-en="Help me prepare to talk about the way we speak later" data-es="Ayúdame a preparar cómo hablar de las formas después"></button>
+</section>
+
+<section id="criticismSecondAttemptResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="After trying once more to make the request concrete, what happened?" data-es="Después de intentar una vez más concretar la petición, ¿qué pasó?"></h2>
+<button onclick="go('criticismClarified')" data-en="Now they gave me a concrete request" data-es="Ahora sí me dio una petición concreta"></button>
+<button onclick="go('criticismNoRequestClose')" data-en="It stayed general or they still expected me to know" data-es="Siguió siendo general o esperaba que yo lo supiera"></button>
+<button onclick="restartAt('escalationReset')" data-en="It escalated again" data-es="Volvió a escalar"></button>
+<button onclick="go('defensiveStoppedTalk')" data-en="They stopped wanting to talk" data-es="Dejó de querer hablar"></button>
+</section>
+
+<section id="criticismNoRequestClose" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You can't respond precisely to a request that still hasn't become concrete." data-es="No puedes responder con precisión a una petición que todavía no se ha vuelto concreta."></h2>
+<p data-en="You already tried to clarify it. Repeating the same question right now may only restart the cycle." data-es="Ya intentaste aclararla. Repetir la misma pregunta ahora puede reiniciar el ciclo."></p>
+<button class="primary" onclick="go('feedback')" data-en="Stop here for now" data-es="Detenerme aquí por ahora"></button>
+</section>
+
+<section id="distantAfterSpace" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="After giving space, what changed?" data-es="Después de darle espacio, ¿qué cambió?"></h2>
+<button onclick="go('wontTalkReturned')" data-en="They came back to talk" data-es="Volvió para hablar"></button>
+<button onclick="go('distantClose')" data-en="They're still calm but distant" data-es="Sigue tranquilo/a, pero distante"></button>
+<button onclick="go('wontTalkStill')" data-en="They still don't want to talk" data-es="Todavía no quiere hablar"></button>
+<button onclick="restartAt('escalationReset')" data-en="The argument restarted" data-es="La discusión empezó otra vez"></button>
+</section>
+
+<section id="distantClose" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Distance is not a problem you have to fix immediately." data-es="La distancia no es un problema que tengas que corregir inmediatamente."></h2>
+<p data-en="You gave space and the conflict did not restart. For now, don't turn their distance into a new demand for reassurance." data-es="Diste espacio y el conflicto no volvió a empezar. Por ahora, no conviertas su distancia en una nueva exigencia de tranquilidad o cercanía."></p>
+<button class="primary" onclick="go('feedback')" data-en="Leave it here for now" data-es="Dejarlo aquí por ahora"></button>
+</section>
+
+<section id="heardClarificationResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="After clarifying once, what happened?" data-es="Después de aclararlo una vez, ¿qué pasó?"></h2>
+<button onclick="go('heardAccurately')" data-en="Now they understood what I meant" data-es="Ahora sí entendió lo que quise decir"></button>
+<button onclick="go('misunderstandingClose')" data-en="They still understood something different" data-es="Todavía entendió algo diferente"></button>
+<button onclick="go('heardTheirSide')" data-en="They want to explain their perspective" data-es="Quiere explicarme su perspectiva"></button>
+<button onclick="restartAt('escalationReset')" data-en="We started escalating again" data-es="Volvimos a alterarnos"></button>
+</section>
+
+<section id="misunderstandingClose" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Don't keep correcting the same message while both of you are getting more frustrated." data-es="No sigas corrigiendo el mismo mensaje mientras ambos se frustran más."></h2>
+<p data-en="You already clarified once. It may be better to pause and return when the conversation has more room for understanding." data-es="Ya lo aclaraste una vez. Puede ser mejor pausar y retomarlo cuando haya más espacio para entenderse."></p>
+<button class="primary" onclick="go('feedback')" data-en="Pause here" data-es="Pausar aquí"></button>
+</section>
+
+<section id="apologySecondListenResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="After asking what you were still missing, do you understand the impact better?" data-es="Después de preguntar qué te faltaba comprender, ¿entiendes mejor el impacto?"></h2>
+<button onclick="go('understandBetter')" data-en="Yes — I understand it better now" data-es="Sí — ahora lo entiendo mejor"></button>
+<button onclick="go('apologyPauseClose')" data-en="No — I still don't understand" data-es="No — todavía no lo entiendo"></button>
+<button onclick="restartAt('escalationReset')" data-en="The conversation became heated again" data-es="La conversación volvió a calentarse"></button>
+</section>
+
+<section id="apologyPauseClose" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Repeating the apology won't create understanding by force." data-es="Repetir la disculpa no va a crear comprensión por la fuerza."></h2>
+<p data-en="You asked again and still don't understand the impact. Pause rather than turning the apology into another argument." data-es="Volviste a preguntar y todavía no comprendes el impacto. Pausa antes de convertir la disculpa en otra discusión."></p>
+<button class="primary" onclick="go('feedback')" data-en="Stop here for now" data-es="Detenerme aquí por ahora"></button>
+</section>
+
+<section id="understandMoreResult" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Ask one more question, not an endless series." data-es="Haz una pregunta más, no una serie interminable."></h2>
+<div class="script" data-en="“What's the one thing you most need me to understand before I respond?”" data-es="“¿Qué es lo principal que necesitas que entienda antes de responder?”"></div>
+<button onclick="go('understandAfterExtra')" data-en="Now I understand enough to respond" data-es="Ahora entiendo lo suficiente para responder"></button>
+<button onclick="go('understandingPauseClose')" data-en="I still don't understand" data-es="Todavía no lo entiendo"></button>
+<button onclick="restartAt('escalationReset')" data-en="We're getting activated again" data-es="Nos estamos alterando otra vez"></button>
+</section>
+
+<section id="understandingPauseClose" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You don't have to reach perfect understanding right now." data-es="No tienen que alcanzar una comprensión perfecta ahora mismo."></h2>
+<p data-en="If another attempt is making the conversation more circular, stop before the effort to understand becomes another fight." data-es="Si otro intento está volviendo circular la conversación, detente antes de que el esfuerzo por entender se convierta en otra pelea."></p>
+<button class="primary" onclick="go('feedback')" data-en="Pause here" data-es="Pausar aquí"></button>
+</section>
+
+<section id="escalationReset" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="THE CONVERSATION ESCALATED AGAIN" data-es="LA CONVERSACIÓN VOLVIÓ A ESCALAR"></div>
+<h2 data-en="Don't restart the same route while you're activated." data-es="No reinicies la misma ruta mientras sigues alterado/a."></h2>
+<p data-en="You already tried an intervention and the intensity rose again. The next useful move is to stop adding content, create a pause, and judge whether the moment is safe." data-es="Ya intentaste una intervención y la intensidad volvió a subir. El siguiente movimiento útil es dejar de añadir contenido, crear una pausa y comprobar si el momento es seguro."></p>
+<button class="primary" onclick="go('escalationClosure')" data-en="We paused — close this intervention" data-es="Pudimos pausar — cerrar esta intervención"></button>
+<button onclick="go('danger')" data-en="There is fear, threats, aggression, or danger" data-es="Hay miedo, amenazas, agresión o peligro"></button>
+</section>
+
+<section id="understandAfterExtra" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="You asked once more and now understand enough to decide what comes next." data-es="Preguntaste una vez más y ahora entiendes lo suficiente para decidir qué sigue."></h2>
+<button onclick="go('agreement')" data-en="We found something concrete we can agree to do differently" data-es="Encontramos algo concreto que podemos acordar hacer diferente"></button>
+<button onclick="go('noAgreement')" data-en="I understand better, but we still disagree" data-es="Entiendo mejor, pero seguimos sin estar de acuerdo"></button>
+<button onclick="go('feedback')" data-en="That's enough for now" data-es="Por ahora es suficiente"></button>
+</section>
+
+<section id="chaseUrgePersistent" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="The urge is still there even after you gave space." data-es="La urgencia sigue ahí incluso después de haberle dado espacio."></h2>
+<p data-en="Don't turn the same urge into another round of following. For now, keep the physical distance and regulate yourself instead of reopening the conversation." data-es="No conviertas la misma urgencia en otra ronda de persecución. Por ahora, mantén la distancia física y regúlate en lugar de reabrir la conversación."></p>
+<button class="primary" onclick="go('feedback')" data-en="I won't follow them — close this intervention" data-es="No iré detrás — cerrar esta intervención"></button>
+<button onclick="go('danger')" data-en="I'm afraid something unsafe is happening" data-es="Temo que esté ocurriendo algo inseguro"></button>
+</section>
+
+<section id="escalationClosure" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="STOP THE LOOP" data-es="DETÉN EL CICLO"></div>
+<h2 data-en="This intervention has reached its limit for this moment." data-es="Esta intervención llegó a su límite para este momento."></h2>
+<p data-en="The conflict escalated again after an attempt to de-escalate. Don't restart another communication route immediately. Create distance from the argument and return only when the intensity has genuinely dropped." data-es="El conflicto volvió a escalar después de intentar desescalarlo. No reinicies inmediatamente otra ruta de comunicación. Toma distancia de la discusión y retómala solo cuando la intensidad haya bajado de verdad."></p>
+<button class="primary" onclick="go('home')" data-en="Finish for now" data-es="Terminar por ahora"></button>
+<button onclick="go('professionalHelpInfo')" data-en="This pattern keeps repeating" data-es="Este patrón se repite constantemente"></button>
+<button onclick="go('danger')" data-en="There is fear, threats, aggression, or danger" data-es="Hay miedo, amenazas, agresión o peligro"></button>
+</section>
+
+<section id="preConversationRegulate" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<h2 data-en="Then don't start the conversation yet." data-es="Entonces todavía no inicies la conversación."></h2>
+<p data-en="If you aren't ready to hear an answer you may dislike, preparation has done its job: it showed you that this isn't the moment to begin." data-es="Si todavía no estás listo/a para escuchar una respuesta que quizá no te guste, la preparación ya cumplió una función: mostrarte que este no es el momento de empezar."></p>
+<button class="primary" onclick="go('home')" data-en="Pause and return later" data-es="Pausar y volver más tarde"></button>
+</section>
+
+<section id="resumeLaterPrep" class="screen">
+<button class="back" onclick="goBack()" data-en="← Back" data-es="← Atrás"></button>
+<div class="kicker" data-en="FOR LATER" data-es="PARA MÁS TARDE"></div>
+<h2 data-en="Keep the next conversation small." data-es="Mantén pequeña la próxima conversación."></h2>
+<p data-en="Choose one issue, one concrete request, and one moment when both of you are calmer. You don't need to reopen everything now." data-es="Elige un solo tema, una petición concreta y un momento en que ambos estén más tranquilos. No necesitas reabrir todo ahora."></p>
+<div class="script" data-en="“When we're both calmer, I'd like to come back to one part of what happened. I don't want to restart the fight; I want us to understand that part better.”" data-es="“Cuando estemos más tranquilos, me gustaría retomar una parte de lo que pasó. No quiero reiniciar la pelea; quiero que entendamos mejor esa parte.”"></div>
+<button class="primary" onclick="go('home')" data-en="Save this for later and finish" data-es="Guardar esto para después y terminar"></button>
+</section>
+</main>
+<script>
+function enterApp(){
+  try{
+    const cb=document.getElementById('skipIntro');
+    if(cb && cb.checked) localStorage.setItem('dfySkipIntro','1');
+  }catch(e){}
+  go('home');
+}
+function applyIntroPreference(){
+  try{
+    if(localStorage.getItem('dfySkipIntro')==='1'){
+      document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+      const h=document.getElementById('home'); if(h) h.classList.add('active');
+    }
+  }catch(e){}
+}
+
+let navHistory = [];
+function goBack(){
+  const prev=navHistory.pop() || 'home';
+  window.__goingBack=true; go(prev); window.__goingBack=false;
+}
+
+let lang='es';
+function render(){document.documentElement.lang=lang;document.querySelectorAll('[data-en]').forEach(el=>{el.innerHTML=el.dataset[lang]});document.querySelectorAll('[data-placeholder-en]').forEach(el=>{el.placeholder=(lang==='en'?el.dataset.placeholderEn:el.dataset.placeholderEs)});document.getElementById('en').classList.toggle('on',lang==='en');document.getElementById('es').classList.toggle('on',lang==='es');}
+function setLang(x){lang=x;render();try{localStorage.setItem('dfyLang',x)}catch(e){}}
+function go(id){
+  const cur=document.querySelector('.screen.active');
+  if(cur && !window.__goingBack && cur.id!==id) navHistory.push(cur.id);
+document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));const el=document.getElementById(id);if(!el){alert('Route error: '+id);return}el.classList.add('active');scrollTo(0,0)}
+try{lang=localStorage.getItem('dfyLang')||'es'}catch(e){} render();
+
+document.addEventListener('DOMContentLoaded', applyIntroPreference);
+function recordFeedbackTC(v){try{let a=JSON.parse(localStorage.getItem("dfy_tc_feedback")||"[]");a.push({value:v,at:new Date().toISOString()});localStorage.setItem("dfy_tc_feedback",JSON.stringify(a));}catch(e){}go("feedbackThanksTC");}
+function copyMissingSituation(){const e=document.getElementById("missingSituation");const t=e?e.value.trim():"";if(!t)return;if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).finally(()=>go("feedbackThanksTC"));}else{try{e.select();document.execCommand("copy");}catch(x){}go("feedbackThanksTC");}}function restartAt(id){historyStack=[];show(id);window.scrollTo(0,0);}
+</script></body></html>
